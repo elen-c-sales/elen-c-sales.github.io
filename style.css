@@ -1,0 +1,450 @@
+/* ====================
+   Fonte e Reset Geral
+==================== */
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #f5f8fe;
+    color: #181b1f;
+    line-height: 1.6;
+  }
+  
+  /* ====================
+     Cabeçalho / Topo
+  ==================== */
+  .topo {
+    background-color: #1b1aff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .topo nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+  
+  .topo nav ul li {
+    margin: 0 15px;
+  }
+  
+  .topo nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .topo nav ul li a:hover {
+    color: #f5f8fe;
+  }
+  
+  .titulo h1 {
+    margin-top: 10px;
+    font-size: 2em;
+  }
+  
+  .titulo p {
+    margin-top: 5px;
+    font-size: 1em;
+  }
+  
+  /* ====================
+     Introdução / Badges
+  ==================== */
+  .intro {
+    text-align: center;
+    padding: 30px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .badges a {
+    display: inline-block;
+    margin: 8px;
+    padding: 8px 14px;
+    background-color: #1b1aff;
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+  
+  .badges a:hover {
+    background-color: #181b1f;
+  }
+  
+  /* ====================
+     Projetos
+  ==================== */
+  #projetos {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  #projetos h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card h3 {
+    color: #1b1aff;
+    font-size: 1.25rem;
+  }
+  
+  .card p {
+    font-size: 0.95rem;
+    margin: 10px 0 20px;
+  }
+  
+  .card a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #1b1aff;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+  }
+  
+  .card a:hover {
+    background-color: #181b1f;
+  }
+  
+  /* ====================
+     Rodapé
+  ==================== */
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    color: #777;
+  }
+
+  /* ====================
+   Fonte e Reset Geral
+==================== */
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #f5f8fe;
+    color: #181b1f;
+    line-height: 1.6;
+  }
+  
+  /* ====================
+     Cabeçalho / Topo
+  ==================== */
+  .topo {
+    background-color: #1b1aff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .topo nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+  
+  .topo nav ul li {
+    margin: 0 15px;
+  }
+  
+  .topo nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .topo nav ul li a:hover {
+    color: #f5f8fe;
+  }
+  
+  .titulo h1 {
+    margin-top: 10px;
+    font-size: 2em;
+  }
+  
+  .titulo p {
+    margin-top: 5px;
+    font-size: 1em;
+  }
+  
+  /* ====================
+     Introdução / Badges
+  ==================== */
+  .intro {
+    text-align: center;
+    padding: 30px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .badges a {
+    display: inline-block;
+    margin: 8px;
+    padding: 8px 14px;
+    background-color: #1b1aff;
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+  
+  .badges a:hover {
+    background-color: #181b1f;
+  }
+  
+  /* ====================
+     Projetos
+  ==================== */
+  #projetos {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  #projetos h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card h3 {
+    color: #1b1aff;
+    font-size: 1.25rem;
+  }
+  
+  .card p {
+    font-size: 0.95rem;
+    margin: 10px 0 20px;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 16px;
+    border: 0.5px solid #dcdcdc;  /* borda fina */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }  
+  
+  .card a:hover {
+    background-color: #181b1f;
+  }
+  
+  /* ====================
+     Rodapé
+  ==================== */
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    color: #777;
+  }
+  
+  
+  /* ====================
+     Tags de ferramentas
+  ==================== */
+  .tags {
+    margin: 10px 0;
+  }
+  
+  .tags span {
+    display: inline-block;
+    background-color: #f5f8fe;
+    color: #1b1aff;
+    border: 1px solid #1b1aff;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    margin: 3px;
+    font-weight: 600;
+  }
+  
+  /* ====================
+   Seção Sobre
+==================== */
+.sobre {
+    background-color: #fff;
+    padding: 60px 20px;
+  }
+  
+  .sobre-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 40px;
+    justify-content: center;
+  }
+  
+  .foto-perfil {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #1b1aff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  }
+  
+  .descricao {
+    flex: 1;
+    max-width: 600px;
+  }
+  
+  .descricao h2 {
+    font-size: 2rem;
+    color: #1b1aff;
+    margin-bottom: 10px;
+  }
+  
+  .descricao p {
+    margin-bottom: 14px;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* ====================
+     Seção Ferramentas
+  ==================== */
+  #ferramentas {
+    background-color: #f5f8fe;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  
+  #ferramentas h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #181b1f;
+  }
+  
+  .ferramentas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .ferramenta {
+    padding: 14px 24px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    color: #1b1aff;
+    border: 1px solid #1b1aff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: default;
+    font-size: 0.95rem;
+  }
+  
+  .ferramenta:hover {
+    background-color: #1b1aff;
+    color: #fff;
+    transform: scale(1.05);
+  }
+
+  /* ====================
+   Seção Contato
+==================== */
+#contato {
+    padding: 60px 20px;
+    background-color: #f5f8fe;
+    text-align: center;
+  }
+  
+  #contato h2 {
+    font-size: 2rem;
+    color: #1b1aff;
+    margin-bottom: 30px;
+  }
+  
+  .contato-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 500px;
+    text-align: left;
+  }
+  
+  .contato-lista li {
+    margin-bottom: 16px;
+    font-size: 1rem;
+    color: #181b1f;
+  }
+  
+  .contato-lista li strong {
+    color: #1b1aff;
+  }
+  
+  .contato-lista a {
+    color: #1b1aff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .contato-lista a:hover {
+    color: #181b1f;
+    text-decoration: underline;
+  }
+  
