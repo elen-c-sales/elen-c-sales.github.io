@@ -407,44 +407,70 @@ body {
   /* ====================
    Seção Contato
 ==================== */
-#contato {
-    padding: 60px 20px;
-    background-color: #f5f8fe;
-    text-align: center;
-  }
-  
-  #contato h2 {
-    font-size: 2rem;
-    color: #1b1aff;
-    margin-bottom: 30px;
-  }
-  
-  .contato-lista {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    max-width: 500px;
-    text-align: left;
-  }
-  
-  .contato-lista li {
-    margin-bottom: 16px;
-    font-size: 1rem;
-    color: #181b1f;
-  }
-  
-  .contato-lista li strong {
-    color: #1b1aff;
-  }
-  
-  .contato-lista a {
-    color: #1b1aff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .contato-lista a:hover {
-    color: #181b1f;
-    text-decoration: underline;
-  }
-  
+.contato {
+  background-color: #f5f8fe;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contato h2 {
+  font-size: 2rem;
+  color: #1b1aff;
+  margin-bottom: 40px;
+}
+
+.contato-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto 40px;
+}
+
+.contato-item {
+  background-color: white;
+  border-radius: 16px;
+  padding: 20px;
+  width: 160px; /* 🔥 Aqui diminui */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.contato-item:hover {
+  transform: translateY(-5px);
+}
+
+.contato-item i {
+  font-size: 1.7rem; /* 🔥 Ícone menor */
+  color: #1b1aff;
+  margin-bottom: 10px;
+}
+
+.contato-item h3 {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #181b1f;
+}
+
+.contato-item a {
+  color: #1b1aff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.3s ease;
+}
+
+.contato-item a:hover {
+  text-decoration: underline;
+}
+
+.card img {
+  width: 100%;
+  max-width: 500px;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  background-color: #f5f8fe; /* opcional, para fundo quando sobra espaço */
+}
