@@ -1,410 +1,295 @@
+
+
 /* ====================
    Fonte e Reset Geral
 ==================== */
 body {
-    margin: 0;
-    font-family: 'Quicksand', sans-serif;
-    background-color: #f5f8fe;
-    color: #181b1f;
-    line-height: 1.6;
-  }
-  
-  /* ====================
-     Cabeçalho / Topo
-  ==================== */
-  .topo {
-    background-color: #1b1aff;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
-  .topo nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-    flex-wrap: wrap;
-  }
-  
-  .topo nav ul li {
-    margin: 0 15px;
-  }
-  
-  .topo nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  .topo nav ul li a:hover {
-    color: #f5f8fe;
-  }
-  
-  .titulo h1 {
-    margin-top: 10px;
-    font-size: 2em;
-  }
-  
-  .titulo p {
-    margin-top: 5px;
-    font-size: 1em;
-  }
-  
-  /* ====================
-     Introdução / Badges
-  ==================== */
-  .intro {
-    text-align: center;
-    padding: 30px 20px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .badges a {
-    display: inline-block;
-    margin: 8px;
-    padding: 8px 14px;
-    background-color: #1b1aff;
-    color: white;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 14px;
-    transition: background 0.3s ease;
-  }
-  
-  .badges a:hover {
-    background-color: #181b1f;
-  }
-  
-  /* ====================
-     Projetos
-  ==================== */
-  #projetos {
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  #projetos h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    position: relative;
-  }
-  
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  
-  .card {
-    background-color: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card h3 {
-    color: #1b1aff;
-    font-size: 1.25rem;
-  }
-  
-  .card p {
-    font-size: 0.95rem;
-    margin: 10px 0 20px;
-  }
-  
-  .card a {
-    display: inline-block;
-    text-decoration: none;
-    background-color: #1b1aff;
-    color: white;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    transition: background 0.3s ease;
-  }
-  
-  .card a:hover {
-    background-color: #181b1f;
-  }
-  
-  /* ====================
-     Rodapé
-  ==================== */
-  footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.85rem;
-    color: #777;
-  }
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #f5f8fe;
+  color: #181b1f;
+  line-height: 1.6;
+}
 
-  /* ====================
-   Fonte e Reset Geral
+/* ====================
+   Cabeçalho / Topo
 ==================== */
-body {
-    margin: 0;
-    font-family: 'Quicksand', sans-serif;
-    background-color: #f5f8fe;
-    color: #181b1f;
-    line-height: 1.6;
-  }
-  
-  /* ====================
-     Cabeçalho / Topo
-  ==================== */
-  .topo {
-    background-color: #1b1aff;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
-  .topo nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-    flex-wrap: wrap;
-  }
-  
-  .topo nav ul li {
-    margin: 0 15px;
-  }
-  
-  .topo nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  .topo nav ul li a:hover {
-    color: #f5f8fe;
-  }
-  
-  .titulo h1 {
-    margin-top: 10px;
-    font-size: 2em;
-  }
-  
-  .titulo p {
-    margin-top: 5px;
-    font-size: 1em;
-  }
-  
-  /* ====================
-     Introdução / Badges
-  ==================== */
-  .intro {
-    text-align: center;
-    padding: 30px 20px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .badges a {
-    display: inline-block;
-    margin: 8px;
-    padding: 8px 14px;
-    background-color: #1b1aff;
-    color: white;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 14px;
-    transition: background 0.3s ease;
-  }
-  
-  .badges a:hover {
-    background-color: #181b1f;
-  }
-  
-  /* ====================
-     Projetos
-  ==================== */
-  #projetos {
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  #projetos h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    position: relative;
-  }
-  
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  
-  .card {
-    background-color: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card h3 {
-    color: #1b1aff;
-    font-size: 1.25rem;
-  }
-  
-  .card p {
-    font-size: 0.95rem;
-    margin: 10px 0 20px;
-  }
-  
-  .card {
-    background-color: white;
-    padding: 25px;
-    border-radius: 16px;
-    border: 0.5px solid #dcdcdc;  /* borda fina */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }  
-  
-  .card a:hover {
-    background-color: #181b1f;
-  }
-  
-  /* ====================
-     Rodapé
-  ==================== */
-  footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.85rem;
-    color: #777;
-  }
-  
-  
-  /* ====================
-     Tags de ferramentas
-  ==================== */
-  .tags {
-    margin: 10px 0;
-  }
-  
-  .tags span {
-    display: inline-block;
-    background-color: #f5f8fe;
-    color: #1b1aff;
-    border: 1px solid #1b1aff;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    margin: 3px;
-    font-weight: 600;
-  }
-  
-  /* ====================
+.topo {
+  background-color: #974dff; /* Cor principal atualizada */
+  color: white;
+  padding-top: 10px; /* Ajuste para combinar com a estrutura de Camila */
+}
+
+/* Adaptação da barra de navegação do Samuel para a nav do Camila */
+.topo nav {
+  position: sticky;
+  top: 0;
+  background-color: #974dff; /* Cor principal atualizada */
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.topo nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  margin: 0;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.topo nav ul li {
+  margin: 0; /* Reset da margem original de Camila */
+}
+
+.topo nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.topo nav ul li a:hover {
+  opacity: 0.8;
+}
+
+/* Adaptação do título fixo do Samuel para o título do Camila */
+.titulo {
+  padding: 30px 0 20px;
+  text-align: center;
+  background-color: #974dff; /* Cor principal atualizada */
+  color: white; /* Garantir cor do texto */
+}
+
+.titulo h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.titulo p {
+  font-size: 1.1rem;
+  margin-top: 8px;
+}
+
+/* ====================
    Seção Sobre
 ==================== */
 .sobre {
-    background-color: #fff;
-    padding: 60px 20px;
-  }
-  
-  .sobre-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-    gap: 40px;
-    justify-content: center;
-  }
-  
-  .foto-perfil {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #1b1aff;
-    box-shadow: 0 0 15px rgba(0,0,0,0.05);
-  }
-  
-  .descricao {
-    flex: 1;
-    max-width: 600px;
-  }
-  
-  .descricao h2 {
-    font-size: 2rem;
-    color: #1b1aff;
-    margin-bottom: 10px;
-  }
-  
-  .descricao p {
-    margin-bottom: 14px;
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  
-  /* ====================
-     Seção Ferramentas
-  ==================== */
-  #ferramentas {
-    background-color: #f5f8fe;
-    text-align: center;
-    padding: 60px 20px;
-  }
-  
-  #ferramentas h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-    color: #181b1f;
-  }
-  
-  .ferramentas-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .ferramenta {
-    padding: 14px 24px;
-    border-radius: 12px;
-    background-color: #ffffff;
-    color: #1b1aff;
-    border: 1px solid #1b1aff;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    cursor: default;
-    font-size: 0.95rem;
-  }
-  
-  .ferramenta:hover {
-    background-color: #1b1aff;
-    color: #fff;
-    transform: scale(1.05);
-  }
+  background-color: #fff;
+  padding: 60px 20px;
+}
 
-  /* ====================
+.sobre-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 40px;
+  justify-content: center;
+}
+
+.foto-perfil {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #974dff; /* Cor principal atualizada */
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.descricao {
+  flex: 1;
+  max-width: 600px;
+}
+
+.descricao h2 {
+  font-size: 2rem;
+  color: #974dff; /* Cor principal atualizada */
+  margin-bottom: 20px;
+}
+
+.descricao p {
+  margin-bottom: 14px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Estilos de links sociais (se adicionados futuramente) */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #f5f8fe;
+  color: #974dff; /* Cor principal atualizada */
+  border: 1px solid #974dff; /* Cor principal atualizada */
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+  background-color: #974dff; /* Cor principal atualizada */
+  color: white;
+}
+
+/* ====================
+   Seção Ferramentas (Adaptado de Tecnologias)
+==================== */
+#ferramentas {
+  background-color: #f5f8fe;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+#ferramentas h2 {
+  font-size: 2rem;
+  color: #974dff; /* Cor principal atualizada */
+  margin-bottom: 40px;
+}
+
+/* Adaptação do container de tecnologias para o grid de ferramentas */
+.ferramentas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajuste para itens menores */
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Adaptação do item de tecnologia para a ferramenta */
+.ferramenta {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease;
+  font-weight: 700;
+  color: #974dff; /* Cor principal atualizada */
+  font-size: 1.1rem;
+  cursor: default; /* Mantido de Camila */
+  border: none; /* Remover borda original de Camila */
+}
+
+.ferramenta:hover {
+  transform: translateY(-5px);
+  background-color: white; /* Manter fundo branco no hover */
+  color: #974dff; /* Manter cor no hover */
+}
+
+/* ====================
+   Seção Projetos
+==================== */
+#projetos {
+  background-color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+#projetos h2 {
+  font-size: 2rem;
+  color: #974dff; /* Cor principal atualizada */
+  margin-bottom: 40px;
+}
+
+/* Adaptação do container de projetos */
+.projetos-container .grid { /* Selecionando o grid dentro do container */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajuste do minmax */
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Adaptação do card de projeto */
+.card {
+  background-color: #f5f8fe;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease;
+  border: none; /* Remover borda original de Camila */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: #974dff; /* Cor principal atualizada */
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.card img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background-color: #ffffff; /* Fundo branco para imagens */
+  display: block; /* Garantir que seja bloco */
+}
+
+/* Adaptação das tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.tags span {
+  background-color: rgba(151, 77, 255, 0.1); /* Cor principal com alpha */
+  color: #974dff; /* Cor principal atualizada */
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: none; /* Remover borda original de Camila */
+}
+
+.card p {
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333; /* Cor do texto do parágrafo */
+}
+
+/* Adaptação dos links/botões do projeto */
+.card a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background-color: #974dff; /* Cor principal atualizada */
+  color: white;
+  margin-top: 0; /* Reset margin-top */
+}
+
+.card a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #823be6; /* Variação da cor principal no hover */
+}
+
+/* ====================
    Seção Contato
 ==================== */
 .contato {
@@ -415,7 +300,7 @@ body {
 
 .contato h2 {
   font-size: 2rem;
-  color: #1b1aff;
+  color: #974dff; /* Cor principal atualizada */
   margin-bottom: 40px;
 }
 
@@ -423,18 +308,19 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  max-width: 1000px;
+  gap: 30px;
+  max-width: 1100px;
   margin: 0 auto 40px;
 }
 
 .contato-item {
   background-color: white;
   border-radius: 16px;
-  padding: 20px;
-  width: 160px; /* 🔥 Aqui diminui */
+  padding: 30px;
+  width: 200px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease;
+  text-align: center; /* Centralizar conteúdo do item */
 }
 
 .contato-item:hover {
@@ -442,35 +328,120 @@ body {
 }
 
 .contato-item i {
-  font-size: 1.7rem; /* 🔥 Ícone menor */
-  color: #1b1aff;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  color: #974dff; /* Cor principal atualizada */
+  margin-bottom: 15px;
+  display: block; /* Garantir que o ícone fique acima */
 }
 
 .contato-item h3 {
-  margin: 8px 0;
-  font-size: 1rem;
+  margin: 10px 0;
+  font-size: 1.1rem;
   color: #181b1f;
 }
 
 .contato-item a {
-  color: #1b1aff;
+  color: #974dff; /* Cor principal atualizada */
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   transition: color 0.3s ease;
+  word-break: break-word; /* Mantido de Camila */
 }
 
 .contato-item a:hover {
   text-decoration: underline;
 }
 
-.card img {
-  width: 100%;
-  max-width: 500px;
-  max-height: 300px;
-  object-fit: contain;
-  border-radius: 10px;
-  display: block;
-  margin: 0 auto;
-  background-color: #f5f8fe; /* opcional, para fundo quando sobra espaço */
+/* ====================
+   Rodapé
+==================== */
+footer {
+  background-color: #181b1f;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ====================
+   Responsividade (Baseado no Samuel)
+==================== */
+@media (max-width: 768px) {
+  .topo nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sobre-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .descricao {
+    text-align: center; /* Ajuste para centralizar no mobile */
+    max-width: 90%; /* Ajuste para não ficar muito largo */
+  }
+
+  .projetos-container .grid, .ferramentas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contato-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contato-item {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .titulo h1 {
+    font-size: 2rem; /* Ajuste para mobile */
+  }
+
+  .titulo p {
+    font-size: 1rem; /* Ajuste para mobile */
+  }
+
+  .card, .contato-item {
+    padding: 20px;
+  }
+
+  .card a {
+    width: calc(100% - 32px); /* Ajustar largura do botão */
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+.menu-fixo {
+  position: sticky;
+  top: 0;
+  background-color: #974dff;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-fixo ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  margin: 0;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.menu-fixo ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
 }
