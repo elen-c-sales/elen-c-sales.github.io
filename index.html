@@ -4,154 +4,351 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio de Elen Camila Sales Silva</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style_novo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <nav class="menu-fixo">
-    <ul>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#ferramentas">Ferramentas</a></li>
-      <li><a href="#projetos">Projetos</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-  </nav>
-
-  <header class="topo">
-    <div class="titulo">
-      <h1>Portfólio de Elen Camila Sales Silva</h1>
-      <p>Ciência de Dados & Análise Exploratória</p>
+  <header class="header">
+    <div class="header-content">
+      <div class="profile-section">
+        <img src="perfil.jpg" alt="Elen Camila Sales Silva" class="profile-image">
+        <div class="profile-info">
+          <h1>Elen Camila Sales Silva</h1>
+          <p class="profile-title">Cientista de Dados & Desenvolvedora Full-Stack</p>
+          <p class="profile-description">Transformando dados em ferramentas inteligentes e criando soluções escaláveis que entregam valor tangível</p>
+        </div>
+      </div>
+      <div class="header-stats">
+        <div class="stat-item">
+          <span class="stat-number">12+</span>
+          <span class="stat-label">Projetos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">6</span>
+          <span class="stat-label">Tecnologias</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">3+</span>
+          <span class="stat-label">Anos Exp.</span>
+        </div>
+      </div>
     </div>
   </header>
 
-  <section class="sobre" id="sobre">
-    <div class="sobre-container">
-      <img src="perfil.jpg" alt="Foto de perfil" class="foto-perfil">
-      <div class="descricao">
-        <h2>Sobre mim</h2>
-        <p>Desenvolvedora e Analista de Dados com paixão por transformar informações em ferramentas inteligentes. Minha expertise abrange desde a análise profunda de dados (Python, R, SQL) e modelagem preditiva (Machine Learning com scikit-learn) até o desenvolvimento full-stack de soluções personalizadas.</p>
-        <p>Crio não apenas dashboards (Power BI, Dash), mas também aplicações web completas (React, Flask), mobile (React Native) e desktop (Tkinter) que resolvem problemas específicos e otimizam processos. Meu objetivo é ir além dos relatórios, construindo produtos de dados escaláveis, intuitivos e que entreguem valor tangível.</p>
+  <nav class="main-nav">
+    <div class="nav-container">
+      <div class="nav-links">
+        <a href="#sobre" class="nav-link">Sobre</a>
+        <a href="#ferramentas" class="nav-link">Ferramentas</a>
+        <a href="#projetos" class="nav-link">Projetos</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </div>
+      <div class="social-links-nav">
+        <a href="https://github.com/elen-c-sales" target="_blank" class="social-link">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/elen-camila-sales/" target="_blank" class="social-link">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:e.camila.sales@gmail.com" class="social-link">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://wa.me/5591985749738" target="_blank" class="social-link">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="sobre" class="about-section">
+    <div class="container">
+      <h2 class="section-title">Sobre Mim</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Desenvolvedora e Analista de Dados com paixão por transformar informações em ferramentas inteligentes. Minha expertise abrange desde a análise profunda de dados (Python, R, SQL) e modelagem preditiva (Machine Learning com scikit-learn) até o desenvolvimento full-stack de soluções personalizadas.</p>
+          <p>Crio não apenas dashboards (Power BI, Dash), mas também aplicações web completas (React, Flask), mobile (React Native) e desktop (Tkinter) que resolvem problemas específicos e otimizam processos. Meu objetivo é ir além dos relatórios, construindo produtos de dados escaláveis, intuitivos e que entreguem valor tangível.</p>
+          
+          <div class="skills-highlight">
+            <div class="skill-item">
+              <i class="fas fa-chart-line"></i>
+              <span>Análise de Dados</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-robot"></i>
+              <span>Machine Learning</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-code"></i>
+              <span>Desenvolvimento Full-Stack</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-mobile-alt"></i>
+              <span>Apps Mobile</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="ferramentas">
-    <h2>Principais Ferramentas</h2>
-    <div class="ferramentas-grid">
-      <div class="ferramenta" title="Análise de dados & automação">Python</div>
-      <div class="ferramenta" title="Consultas e modelagem de bancos">SQL</div>
-      <div class="ferramenta" title="Dashboards interativos">Plotly / Dash</div>
-      <div class="ferramenta" title="Web scraping">Selenium</div>
-      <div class="ferramenta" title="Desenvolvimento de aplicativos para Android e iOS">React Native</div>
-      <div class="ferramenta" title="Aplicativos desktop com GUI em Python">Tkinter</div>
+  <section id="ferramentas" class="ferramentas-section">
+    <div class="container">
+      <h2 class="section-title">Principais Ferramentas</h2>
+      <p class="section-subtitle">Tecnologias que domino para criar soluções completas e eficientes</p>
+      
+      <div class="ferramentas-grid">
+        <div class="ferramenta" title="Análise de dados & automação">
+          <i class="fab fa-python"></i>
+          Python
+        </div>
+        <div class="ferramenta" title="Consultas e modelagem de bancos">
+          <i class="fas fa-database"></i>
+          SQL
+        </div>
+        <div class="ferramenta" title="Dashboards interativos">
+          <i class="fas fa-chart-bar"></i>
+          Plotly / Dash
+        </div>
+        <div class="ferramenta" title="Web scraping">
+          <i class="fas fa-spider"></i>
+          Selenium
+        </div>
+        <div class="ferramenta" title="Desenvolvimento de aplicativos para Android e iOS">
+          <i class="fab fa-react"></i>
+          React Native
+        </div>
+        <div class="ferramenta" title="Aplicativos desktop com GUI em Python">
+          <i class="fas fa-desktop"></i>
+          Tkinter
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="projetos">
-    <h2>Projetos em Destaque</h2>
-    <div class="projetos-container">
-      <div class="grid">
+  <section id="projetos" class="projects-section">
+    <div class="container">
+      <h2 class="section-title">Projetos em Destaque</h2>
+      <p class="section-subtitle">Explore meus trabalhos em ciência de dados, desenvolvimento e análise</p>
 
-        <div class="card">
-          <h3>Inadimplência no Brasil — Dashboard Interativo (Shiny)</h3>
-          <img src="https://github.com/elen-c-sales/inadimplencia-shiny-dashboard/blob/main/captura_tela.png?raw=true" width="500" alt="Inadimplência no Brasil">
-          <div class="tags">
-            <span>R</span>
-            <span>Shiny</span>
+      <div class="projects-grid">
+        <!-- Projeto 1: Dashboard Inadimplência Shiny -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://github.com/elen-c-sales/inadimplencia-shiny-dashboard/blob/main/captura_tela.png?raw=true" alt="Dashboard Inadimplência">
+            <div class="project-overlay">
+              <span class="project-tag">Dashboard</span>
+            </div>
           </div>
-          <p>Dashboard interativo sobre inadimplência no Brasil, usando dados do Banco Central.</p>
-          <a href="https://github.com/elen-c-sales/inadimplencia-shiny-dashboard" target="_blank">Ver Projeto</a>
+          <div class="project-content">
+            <h3 class="project-title">Inadimplência no Brasil — Dashboard Interativo</h3>
+            <p class="project-description">Dashboard interativo sobre inadimplência no Brasil, usando dados do Banco Central com visualizações dinâmicas e análises temporais.</p>
+            <div class="project-tech">
+              <span class="tech-tag">R</span>
+              <span class="tech-tag">Shiny</span>
+              <span class="tech-tag">Plotly</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/elen-c-sales/inadimplencia-shiny-dashboard" target="_blank" class="btn-primary">
+                <i class="fab fa-github"></i> Ver código
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>ZenCalc — Calculadora Minimalista</h3>
-          <img src="https://github.com/elen-c-sales/zencalc/blob/main/demonstracao.png?raw=true" width="500" alt="ZenCalc">
-          <div class="tags">
-            <span>React Native</span>
-            <span>Expo</span>
+        <!-- Projeto 2: ZenCalc -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://github.com/elen-c-sales/zencalc/blob/main/demonstracao.png?raw=true" alt="ZenCalc">
+            <div class="project-overlay">
+              <span class="project-tag">Mobile</span>
+            </div>
           </div>
-          <p>App mobile com design inspirado no iOS, desenvolvido em React Native.</p>
-          <a href="https://github.com/elen-c-sales/zencalc" target="_blank">Ver Projeto</a>
+          <div class="project-content">
+            <h3 class="project-title">ZenCalc — Calculadora Minimalista</h3>
+            <p class="project-description">App mobile com design inspirado no iOS, desenvolvido em React Native com interface elegante e funcionalidades avançadas.</p>
+            <div class="project-tech">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">Expo</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/elen-c-sales/zencalc" target="_blank" class="btn-primary">
+                <i class="fab fa-github"></i> Ver código
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Inadimplência vs. Consumo das Famílias no Brasil</h3>
-          <img src="https://github.com/elen-c-sales/inadimplencia-vs-consumo-brasil/blob/main/Inadimpl%C3%AAncia%20vs.%20Consumo%20das%20Fam%C3%ADlias%20no%20Brasil.png?raw=true" width="500" alt="Inadimplência vs Consumo">
-          <div class="tags">
-            <span>Python</span>
-            <span>Plotly</span>
-            <span>Pandas</span>
+        <!-- Projeto 3: Análise Inadimplência vs Consumo -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://github.com/elen-c-sales/inadimplencia-vs-consumo-brasil/blob/main/Inadimpl%C3%AAncia%20vs.%20Consumo%20das%20Fam%C3%ADlias%20no%20Brasil.png?raw=true" alt="Análise Inadimplência">
+            <div class="project-overlay">
+              <span class="project-tag">Análise</span>
+            </div>
           </div>
-          <p>Análise da relação entre inadimplência e consumo das famílias no Brasil.</p>
-          <a href="https://github.com/elen-c-sales/inadimplencia-vs-consumo-brasil" target="_blank">Ver Projeto</a>
+          <div class="project-content">
+            <h3 class="project-title">Inadimplência vs. Consumo das Famílias</h3>
+            <p class="project-description">Análise estatística da relação entre inadimplência e consumo das famílias no Brasil com visualizações interativas e insights econômicos.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Plotly</span>
+              <span class="tech-tag">Pandas</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/elen-c-sales/inadimplencia-vs-consumo-brasil" target="_blank" class="btn-primary">
+                <i class="fab fa-github"></i> Ver código
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>INMET Weather Dashboard</h3>
-          <img src="https://github.com/elen-c-sales/inmet-weather-dashboard/blob/main/docs/dashboard_example.png?raw=true" width="500" alt="Weather Dashboard">
-          <div class="tags">
-            <span>Python</span>
-            <span>Dash</span>
-            <span>Selenium</span>
+        <!-- Projeto 4: INMET Weather Dashboard -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://github.com/elen-c-sales/inmet-weather-dashboard/blob/main/docs/dashboard_example.png?raw=true" alt="Weather Dashboard">
+            <div class="project-overlay">
+              <span class="project-tag">Dashboard</span>
+            </div>
           </div>
-          <p>Dashboard interativo com dados meteorológicos do INMET.</p>
-          <a href="https://github.com/elen-c-sales/inmet-weather-dashboard" target="_blank">Ver Projeto</a>
+          <div class="project-content">
+            <h3 class="project-title">INMET Weather Dashboard</h3>
+            <p class="project-description">Dashboard interativo com dados meteorológicos do INMET, incluindo automação de coleta de dados e visualizações em tempo real.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Dash</span>
+              <span class="tech-tag">Selenium</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/elen-c-sales/inmet-weather-dashboard" target="_blank" class="btn-primary">
+                <i class="fab fa-github"></i> Ver código
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Calculadora de Porcentagem Tkinter</h3>
-          <img src="https://github.com/elen-c-sales/calculadora_perc/blob/main/docs/demonstracao.gif?raw=true" width="500" alt="Calculadora Porcentagem">
-          <div class="tags">
-            <span>Python</span>
-            <span>Tkinter</span>
+        <!-- Projeto 5: Calculadora Porcentagem -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://github.com/elen-c-sales/calculadora_perc/blob/main/docs/demonstracao.gif?raw=true" alt="Calculadora Porcentagem">
+            <div class="project-overlay">
+              <span class="project-tag">Desktop</span>
+            </div>
           </div>
-          <p>Calculadora com múltiplas operações percentuais, feita em Python (Tkinter).</p>
-          <a href="https://github.com/elen-c-sales/calculadora_perc" target="_blank">Ver Projeto</a>
+          <div class="project-content">
+            <h3 class="project-title">Calculadora de Porcentagem</h3>
+            <p class="project-description">Aplicativo desktop com múltiplas operações percentuais, interface intuitiva desenvolvida em Python com Tkinter.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Tkinter</span>
+              <span class="tech-tag">GUI</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/elen-c-sales/calculadora_perc" target="_blank" class="btn-primary">
+                <i class="fab fa-github"></i> Ver código
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Calculadora Tkinter (Windows 11)</h3>
-          <img src="https://github.com/elen-c-sales/calculadora_tkinter/blob/main/docs/demo.png?raw=true" width="500" alt="Calculadora Tkinter">
-          <div class="tags">
-            <span>Python</span>
-            <span>Tkinter</span>
+        <!-- Projeto 6: Calculadora Windows 11 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://github.com/elen-c-sales/calculadora_tkinter/blob/main/docs/demo.png?raw=true" alt="Calculadora Windows 11">
+            <div class="project-overlay">
+              <span class="project-tag">Desktop</span>
+            </div>
           </div>
-          <p>Calculadora desktop com layout inspirado no Windows 11.</p>
-          <a href="https://github.com/elen-c-sales/calculadora_tkinter" target="_blank">Ver Projeto</a>
+          <div class="project-content">
+            <h3 class="project-title">Calculadora Tkinter (Windows 11)</h3>
+            <p class="project-description">Calculadora desktop com layout moderno inspirado no Windows 11, desenvolvida com interface responsiva e funcionalidades completas.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Tkinter</span>
+              <span class="tech-tag">Design</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/elen-c-sales/calculadora_tkinter" target="_blank" class="btn-primary">
+                <i class="fab fa-github"></i> Ver código
+              </a>
+            </div>
+          </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <section id="contato" class="contato">
-    <h2>Contato</h2>
-    <div class="contato-container">
-      <div class="contato-item">
-        <i class="fas fa-envelope"></i>
-        <h3>E-mail</h3>
-        <a href="mailto:e.camila.sales@gmail.com">e.camila.sales@gmail.com</a>
-      </div>
-      <div class="contato-item">
-        <i class="fab fa-whatsapp"></i>
-        <h3>WhatsApp</h3>
-        <a href="https://wa.me/5591985749738" target="_blank">+55 91 985749738</a>
-      </div>
-      <div class="contato-item">
-        <i class="fab fa-linkedin"></i>
-        <h3>LinkedIn</h3>
-        <a href="https://www.linkedin.com/in/elen-camila-sales/" target="_blank">linkedin.com/in/elen-camila-sales</a>
-      </div>
-      <div class="contato-item">
-        <i class="fab fa-github"></i>
-        <h3>GitHub</h3>
-        <a href="https://github.com/elen-c-sales" target="_blank">github.com/elen-c-sales</a>
+    <div class="container">
+      <h2 class="section-title">Contato</h2>
+      <p class="section-subtitle">Vamos conversar sobre projetos e oportunidades</p>
+      
+      <div class="contato-container">
+        <div class="contato-item">
+          <i class="fas fa-envelope"></i>
+          <h3>E-mail</h3>
+          <a href="mailto:e.camila.sales@gmail.com">e.camila.sales@gmail.com</a>
+        </div>
+        <div class="contato-item">
+          <i class="fab fa-whatsapp"></i>
+          <h3>WhatsApp</h3>
+          <a href="https://wa.me/5591985749738" target="_blank">+55 91 985749738</a>
+        </div>
+        <div class="contato-item">
+          <i class="fab fa-linkedin"></i>
+          <h3>LinkedIn</h3>
+          <a href="https://www.linkedin.com/in/elen-camila-sales/" target="_blank">linkedin.com/in/elen-camila-sales</a>
+        </div>
+        <div class="contato-item">
+          <i class="fab fa-github"></i>
+          <h3>GitHub</h3>
+          <a href="https://github.com/elen-c-sales" target="_blank">github.com/elen-c-sales</a>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>© Elen Camila Sales Silva — Portfólio em desenvolvimento</p>
+    <p>© 2024 Elen Camila Sales Silva — Portfólio desenvolvido com paixão</p>
   </footer>
+
+  <script>
+    // Smooth scrolling para links de navegação
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Highlight do link ativo na navegação
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const sections = document.querySelectorAll('section');
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+
