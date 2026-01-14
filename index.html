@@ -297,17 +297,26 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255, 107, 157, 0.1);
-      position: sticky;
-      top: 0;
+      position: relative;
       z-index: 100;
       transition: all 0.3s ease;
       width: 100%;
     }
-    
-    .main-nav.scrolled {
+
+    .main-nav.fixed-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      animation: slideDown 0.4s ease-out;
       background: rgba(255, 255, 255, 0.95);
       box-shadow: var(--shadow-sm);
     }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
 
     .nav-container {
       display: flex;
@@ -1048,13 +1057,31 @@
     // Inicia a animação imediatamente após o carregamento do DOM
     document.addEventListener('DOMContentLoaded', animateStats);
 
-    // Navbar Scrolled Effect
+    // Navbar Fixa após Sobre
+    const nav = document.querySelector('.main-nav');
+    const placeholder = document.createElement('div');
+    placeholder.className = 'nav-placeholder';
+    if (nav) {
+      nav.parentNode.insertBefore(placeholder, nav);
+    }
+
     window.addEventListener('scroll', () => {
-      const nav = document.querySelector('.main-nav');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
+      const sobre = document.getElementById('sobre');
+      if (!nav || !sobre) return;
+
+      // Ponto de gatilho: Início da seção Sobre
+      const limit = sobre.offsetTop;
+
+      if (window.scrollY >= limit) {
+        if (!nav.classList.contains('fixed-nav')) {
+          placeholder.style.height = nav.offsetHeight + 'px';
+          nav.classList.add('fixed-nav');
+        }
       } else {
-        nav.classList.remove('scrolled');
+        if (nav.classList.contains('fixed-nav')) {
+          nav.classList.remove('fixed-nav');
+          placeholder.style.height = '0';
+        }
       }
     });
 
