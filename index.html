@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elen Camila Sales Silva | Dev Full-Stack & Data Science</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+
   <style>
     /* ====================
        Reset e Configurações Base
@@ -23,18 +25,18 @@
       --bg-secondary: #f3e5f5;
       --bg-card: #ffffff;
       --bg-card-hover: #fef7ff;
-      
+
       /* Cores de texto */
       --text-primary: #2d1b3d;
       --text-secondary: #6b4c7a;
       --text-muted: #9ca3af;
-      
+
       /* Cores de destaque */
       --accent-primary: #ff6b9d;
       --accent-secondary: #b39ddb;
       --accent-success: #81c784;
       --accent-warning: #ffd54f;
-      
+
       /* Gradientes */
       --gradient-primary: linear-gradient(135deg, #ff6b9d 0%, #b39ddb 100%);
       --gradient-secondary: linear-gradient(135deg, #ff8a80 0%, #ffd54f 100%);
@@ -47,18 +49,20 @@
       --shadow-md: 0 10px 30px rgba(255, 107, 157, 0.15);
       --shadow-lg: 0 20px 50px rgba(45, 27, 61, 0.15);
       --shadow-glow: 0 0 20px rgba(255, 107, 157, 0.4);
-      
+
       /* Bordas */
       --border-radius: 16px;
       --border-radius-lg: 24px;
-      
+
       /* Transições */
       --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
-      overflow-x: hidden; /* Garante que nada saia horizontalmente */
+      overflow-x: hidden;
+      /* Garante que nada saia horizontalmente */
     }
 
     body {
@@ -76,8 +80,10 @@
       filter: blur(80px);
       z-index: -1;
       animation: floatShape 20s infinite alternate;
-      max-width: 100%; /* Previne overflow */
+      max-width: 100%;
+      /* Previne overflow */
     }
+
     .shape-1 {
       top: 10%;
       left: -5%;
@@ -85,6 +91,7 @@
       height: 400px;
       background: rgba(255, 107, 157, 0.15);
     }
+
     .shape-2 {
       bottom: 20%;
       right: -5%;
@@ -95,15 +102,23 @@
     }
 
     @keyframes floatShape {
-      0% { transform: translate(0, 0) rotate(0deg); }
-      100% { transform: translate(30px, 30px) rotate(20deg); } /* Reduzi o movimento para evitar scrollbar */
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      100% {
+        transform: translate(30px, 30px) rotate(20deg);
+      }
+
+      /* Reduzi o movimento para evitar scrollbar */
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
-      width: 100%; /* Garante largura controlada */
+      width: 100%;
+      /* Garante largura controlada */
     }
 
     /* ====================
@@ -114,6 +129,7 @@
         opacity: 0;
         transform: translateY(30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -145,15 +161,26 @@
     }
 
     @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .header::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
       opacity: 0.4;
       z-index: 0;
@@ -173,12 +200,14 @@
       display: flex;
       align-items: center;
       gap: 32px;
-      max-width: 100%; /* Segurança para mobile */
+      max-width: 100%;
+      /* Segurança para mobile */
     }
 
     .profile-image-container {
       position: relative;
-      flex-shrink: 0; /* Impede que a imagem amasse */
+      flex-shrink: 0;
+      /* Impede que a imagem amasse */
     }
 
     .profile-image {
@@ -190,12 +219,20 @@
       box-shadow: var(--shadow-lg);
       transition: var(--transition);
       animation: floatProfile 6s ease-in-out infinite;
-      background-color: #fff; /* Fallback se a imagem falhar */
+      background-color: #fff;
+      /* Fallback se a imagem falhar */
     }
 
     @keyframes floatProfile {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
     .profile-image-container::after {
@@ -209,8 +246,10 @@
       opacity: 0.6;
     }
 
-    @keyframes spin { 
-      100% { transform: rotate(360deg); } 
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     .profile-info {
@@ -224,7 +263,8 @@
       color: white;
       text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       letter-spacing: -1px;
-      word-wrap: break-word; /* Quebra palavras longas */
+      word-wrap: break-word;
+      /* Quebra palavras longas */
     }
 
     .profile-title {
@@ -233,7 +273,7 @@
       margin-bottom: 12px;
       font-weight: 600;
       display: inline-block;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       padding: 4px 12px;
       border-radius: 20px;
       backdrop-filter: blur(4px);
@@ -249,7 +289,8 @@
     .header-stats {
       display: flex;
       gap: 24px;
-      flex-wrap: wrap; /* Permite quebrar linha se não couber */
+      flex-wrap: wrap;
+      /* Permite quebrar linha se não couber */
       justify-content: center;
     }
 
@@ -262,14 +303,16 @@
       border: 1px solid rgba(255, 255, 255, 0.3);
       transition: var(--transition);
       cursor: default;
-      flex: 1; /* Distribui melhor o espaço */
-      min-width: 120px; /* Garante tamanho mínimo legível */
+      flex: 1;
+      /* Distribui melhor o espaço */
+      min-width: 120px;
+      /* Garante tamanho mínimo legível */
     }
 
     .stat-item:hover {
       transform: translateY(-5px) scale(1.05);
       background: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
     .stat-number {
@@ -313,8 +356,13 @@
     }
 
     @keyframes slideDown {
-      from { transform: translateY(-100%); }
-      to { transform: translateY(0); }
+      from {
+        transform: translateY(-100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
     }
 
 
@@ -330,7 +378,8 @@
     .nav-links {
       display: flex;
       gap: 40px;
-      flex-wrap: wrap; /* Importante para mobile */
+      flex-wrap: wrap;
+      /* Importante para mobile */
       justify-content: center;
     }
 
@@ -357,9 +406,18 @@
       border-radius: 2px;
     }
 
-    .nav-link:hover { color: var(--accent-primary); }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-    .nav-link.active { color: var(--accent-primary); }
+    .nav-link:hover {
+      color: var(--accent-primary);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: var(--accent-primary);
+    }
 
     .social-links-nav {
       display: flex;
@@ -370,9 +428,11 @@
       color: var(--text-secondary);
       font-size: 1.2rem;
       transition: var(--transition);
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       display: flex;
-      align-items: center; justify-content: center;
+      align-items: center;
+      justify-content: center;
       border-radius: 50%;
       background: var(--bg-card);
       box-shadow: var(--shadow-sm);
@@ -388,7 +448,11 @@
     /* ====================
        Seções
     ==================== */
-    section { padding: 100px 0; position: relative; width: 100%; }
+    section {
+      padding: 100px 0;
+      position: relative;
+      width: 100%;
+    }
 
     .section-title {
       font-size: 2.8rem;
@@ -399,12 +463,16 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      
+
       /* Correção de Centralização e Overflow */
-      display: table; /* Faz a largura se ajustar ao conteúdo do texto */
-      margin: 0 auto 15px auto; /* Centraliza o bloco automaticamente */
-      max-width: 100%; /* Garante que não ultrapasse a tela */
-      padding: 0 10px; /* Margem de segurança interna */
+      display: table;
+      /* Faz a largura se ajustar ao conteúdo do texto */
+      margin: 0 auto 15px auto;
+      /* Centraliza o bloco automaticamente */
+      max-width: 100%;
+      /* Garante que não ultrapasse a tela */
+      padding: 0 10px;
+      /* Margem de segurança interna */
     }
 
     .section-subtitle {
@@ -415,7 +483,8 @@
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      padding: 0 10px; /* Margem de segurança */
+      padding: 0 10px;
+      /* Margem de segurança */
     }
 
     /* ====================
@@ -473,8 +542,15 @@
     }
 
     @keyframes bounceSubtle {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-3px);
+      }
     }
 
     /* ====================
@@ -482,7 +558,8 @@
     ==================== */
     .ferramentas-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Reduzido minmax para caber melhor no mobile */
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      /* Reduzido minmax para caber melhor no mobile */
       gap: 30px;
     }
 
@@ -502,7 +579,10 @@
     .ferramenta::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: var(--gradient-bg);
       opacity: 0;
       z-index: -1;
@@ -515,7 +595,9 @@
       border-color: rgba(255, 107, 157, 0.3);
     }
 
-    .ferramenta:hover::before { opacity: 1; }
+    .ferramenta:hover::before {
+      opacity: 1;
+    }
 
     .ferramenta i {
       font-size: 3rem;
@@ -524,19 +606,28 @@
       background: var(--gradient-primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text; 
+      background-clip: text;
       transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    .ferramenta:hover i { transform: scale(1.2); }
-    .ferramenta span { font-weight: 700; color: var(--text-primary); font-size: 1.1rem; display: block; }
+    .ferramenta:hover i {
+      transform: scale(1.2);
+    }
+
+    .ferramenta span {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      display: block;
+    }
 
     /* ====================
        Projetos
     ==================== */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); /* Correção crítica: 350px era muito largo para celulares */
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      /* Correção crítica: 350px era muito largo para celulares */
       gap: 40px;
     }
 
@@ -572,11 +663,14 @@
       padding: 15px;
     }
 
-    .project-card:hover .project-image img { transform: scale(1.08); }
+    .project-card:hover .project-image img {
+      transform: scale(1.08);
+    }
 
     .project-tag {
       position: absolute;
-      top: 15px; right: 15px;
+      top: 15px;
+      right: 15px;
       background: rgba(255, 255, 255, 0.9);
       color: var(--accent-primary);
       padding: 6px 14px;
@@ -584,7 +678,7 @@
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(5px);
     }
 
@@ -626,7 +720,7 @@
       font-weight: 600;
       transition: var(--transition);
     }
-    
+
     .project-card:hover .tech-tag {
       background: var(--accent-primary);
       color: white;
@@ -635,7 +729,8 @@
     .project-actions {
       display: flex;
       gap: 15px;
-      flex-wrap: wrap; /* Segurança para botões não estourarem */
+      flex-wrap: wrap;
+      /* Segurança para botões não estourarem */
     }
 
     .btn-primary {
@@ -678,8 +773,10 @@
       background: white;
       border-radius: var(--border-radius-lg);
       padding: 40px;
-      width: 100%; /* Largura fluida */
-      max-width: 300px; /* Limite máximo */
+      width: 100%;
+      /* Largura fluida */
+      max-width: 300px;
+      /* Limite máximo */
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
       text-align: center;
@@ -699,7 +796,9 @@
       transition: transform 0.4s ease;
     }
 
-    .contato-item:hover i { transform: scale(1.2) rotate(10deg); }
+    .contato-item:hover i {
+      transform: scale(1.2) rotate(10deg);
+    }
 
     .contato-item h3 {
       margin: 10px 0;
@@ -712,10 +811,13 @@
       text-decoration: none;
       font-size: 0.95rem;
       transition: var(--transition);
-      word-break: break-all; /* Essencial para emails/links longos no mobile */
+      word-break: break-all;
+      /* Essencial para emails/links longos no mobile */
     }
 
-    .contato-item:hover a { color: var(--accent-primary); }
+    .contato-item:hover a {
+      color: var(--accent-primary);
+    }
 
     /* ====================
        Footer
@@ -728,37 +830,96 @@
       position: relative;
     }
 
-    footer p { opacity: 0.7; font-size: 0.9rem; }
+    footer p {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
 
     /* ====================
        Responsividade
     ==================== */
     @media (max-width: 768px) {
-      .header-content { flex-direction: column; text-align: center; gap: 30px; }
-      .profile-section { flex-direction: column; }
-      .header-stats { gap: 15px; }
-      .stat-item { padding: 15px 10px; }
-      .nav-container { flex-direction: column; gap: 15px; }
-      .nav-links { gap: 15px; font-size: 0.9rem; flex-wrap: wrap; }
-      .about-content { flex-direction: column; }
-      .section-title { font-size: 2.2rem; }
-      .profile-info h1 { font-size: 2.2rem; } /* Reduzi um pouco mais para garantir */
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+      }
+
+      .profile-section {
+        flex-direction: column;
+      }
+
+      .header-stats {
+        gap: 15px;
+      }
+
+      .stat-item {
+        padding: 15px 10px;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+      }
+
+      .profile-info h1 {
+        font-size: 2.2rem;
+      }
+
+      /* Reduzi um pouco mais para garantir */
     }
 
     @media (max-width: 480px) {
-      .section-title { font-size: 1.8rem; }
-      .stat-number { font-size: 2rem; }
-      .stat-label { font-size: 0.75rem; }
-      .ferramenta { padding: 25px 15px; }
-      .project-card { margin: 0 10px; }
-      .header { padding: 50px 0; }
-      
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      .stat-label {
+        font-size: 0.75rem;
+      }
+
+      .ferramenta {
+        padding: 25px 15px;
+      }
+
+      .project-card {
+        margin: 0 10px;
+      }
+
+      .header {
+        padding: 50px 0;
+      }
+
       /* Ajuste fino para os botões dos projetos em telas muito pequenas */
-      .project-actions { flex-direction: column; }
-      .btn-primary { width: 100%; }
+      .project-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary {
+        width: 100%;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Elementos de Fundo -->
@@ -770,17 +931,19 @@
       <div class="profile-section">
         <div class="profile-image-container">
           <!-- IMPORTANTE: Substitua 'perfil.jpg' pelo caminho correto da sua foto se necessário -->
-          <img src="perfil.jpg" alt="Foto de Elen" class="profile-image" onerror="this.src='https://ui-avatars.com/api/?name=Elen+Sales&background=ff6b9d&color=fff&size=200'">
+          <img src="perfil.jpg" alt="Foto de Elen" class="profile-image"
+            onerror="this.src='https://ui-avatars.com/api/?name=Elen+Sales&background=ff6b9d&color=fff&size=200'">
         </div>
         <div class="profile-info">
           <h1 class="reveal">Elen Camila Sales Silva</h1>
           <p class="profile-title reveal">Dev Full-Stack • Data Science • Game Dev</p>
-          <p class="profile-description reveal">De jogos interativos a pipelines de dados e aplicações web completas — construo soluções criativas que combinam código limpo, design inteligente e análise robusta.</p>
+          <p class="profile-description reveal">De jogos interativos a pipelines de dados e aplicações web completas —
+            construo soluções criativas que combinam código limpo, design inteligente e análise robusta.</p>
         </div>
       </div>
       <div class="header-stats reveal">
         <div class="stat-item">
-          <span class="stat-number" data-target="13">0</span>
+          <span class="stat-number" data-target="16">0</span>
           <span class="stat-label">Projetos</span>
         </div>
         <div class="stat-item">
@@ -822,9 +985,13 @@
       <h2 class="section-title reveal">Sobre Mim</h2>
       <div class="about-content">
         <div class="about-text reveal">
-          <p>Desenvolvedora versátil com experiência em desenvolvimento de jogos (Pygame), análise de dados (Python, R, SQL) e aplicações full-stack. Gosto de explorar desde algoritmos visuais e gráficos interativos até modelagem preditiva e dashboards analíticos.</p>
-          <p>Meus projetos vão de recriações de clássicos como Asteroids e efeitos visuais do Doom, até sistemas completos de dados com scraping, processamento e visualização em tempo real. O foco está sempre em criar experiências que funcionam bem e resolvem problemas reais.</p>
-          
+          <p>Desenvolvedora versátil com experiência em desenvolvimento de jogos (Pygame), análise de dados (Python, R,
+            SQL) e aplicações full-stack. Gosto de explorar desde algoritmos visuais e gráficos interativos até
+            modelagem preditiva e dashboards analíticos.</p>
+          <p>Meus projetos vão de recriações de clássicos como Asteroids e efeitos visuais do Doom, até sistemas
+            completos de dados com scraping, processamento e visualização em tempo real. O foco está sempre em criar
+            experiências que funcionam bem e resolvem problemas reais.</p>
+
           <div class="skills-highlight">
             <div class="skill-item">
               <i class="fas fa-chart-line"></i>
@@ -856,7 +1023,7 @@
     <div class="container">
       <h2 class="section-title reveal">Tech Stack</h2>
       <p class="section-subtitle reveal">Ferramentas que utilizo para construir o futuro</p>
-      
+
       <div class="ferramentas-grid">
         <div class="ferramenta reveal">
           <i class="fab fa-python"></i>
@@ -901,21 +1068,25 @@
           <div class="project-image">
             <span class="project-tag">Game Dev</span>
             <video width="100%" height="100%" autoplay loop muted playsinline style="object-fit: cover;">
-              <source src="https://github.com/user-attachments/assets/da232aed-331b-4e2f-8c73-2a47b6fbc29a" type="video/mp4">
+              <source src="https://github.com/user-attachments/assets/da232aed-331b-4e2f-8c73-2a47b6fbc29a"
+                type="video/mp4">
               Seu navegador não suporta a tag de vídeo.
             </video>
           </div>
           <div class="project-content">
             <h3 class="project-title">Dino Run Vecna Edition</h3>
-            <p class="project-description">Versão temática do Dino Run onde você enfrenta o Vecna. Um jogo endless runner divertido desenvolvido para web.</p>
+            <p class="project-description">Versão temática do Dino Run onde você enfrenta o Vecna. Um jogo endless
+              runner divertido desenvolvido para web.</p>
             <div class="project-tech">
               <span class="tech-tag">JavaScript</span>
               <span class="tech-tag">HTML5 Canvas</span>
               <span class="tech-tag">CSS3</span>
             </div>
             <div class="project-actions">
-              <a href="https.github.com/elen-c-sales/dino-run-vecna-edition" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Code</a>
-              <a href="https://elen-c-sales.github.io/dino-run-vecna-edition/" target="_blank" class="btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+              <a href="https.github.com/elen-c-sales/dino-run-vecna-edition" target="_blank" class="btn-primary"><i
+                  class="fab fa-github"></i> Code</a>
+              <a href="https://elen-c-sales.github.io/dino-run-vecna-edition/" target="_blank" class="btn-primary"><i
+                  class="fas fa-external-link-alt"></i> Demo</a>
             </div>
           </div>
         </div>
@@ -925,20 +1096,52 @@
           <div class="project-image">
             <span class="project-tag">Game Dev</span>
             <video width="100%" height="100%" autoplay loop muted playsinline style="object-fit: cover;">
-              <source src="https://github.com/user-attachments/assets/45922754-a0f3-4682-9790-9c348d69de92" type="video/mp4">
+              <source src="https://github.com/user-attachments/assets/45922754-a0f3-4682-9790-9c348d69de92"
+                type="video/mp4">
               Seu navegador não suporta a tag de vídeo.
             </video>
           </div>
           <div class="project-content">
             <h3 class="project-title">Pygame Asteroids</h3>
-            <p class="project-description">Uma interpretação moderna do clássico jogo de arcade Asteroids da Atari, apresentando um sistema visual de profundidade 3D exclusivo que utiliza interpolação de cores e rolagem parallax.</p>
+            <p class="project-description">Uma interpretação moderna do clássico jogo de arcade Asteroids da Atari,
+              apresentando um sistema visual de profundidade 3D exclusivo que utiliza interpolação de cores e rolagem
+              parallax.</p>
             <div class="project-tech">
               <span class="tech-tag">Python</span>
               <span class="tech-tag">Pygame</span>
             </div>
             <div class="project-actions">
-              <a href="https://github.com/elen-c-sales/pygame-asteroids" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Code</a>
-              <a href="https://elen-c-sales.github.io/pygame-asteroids/" target="_blank" class="btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+              <a href="https://github.com/elen-c-sales/pygame-asteroids" target="_blank" class="btn-primary"><i
+                  class="fab fa-github"></i> Code</a>
+              <a href="https://elen-c-sales.github.io/pygame-asteroids/" target="_blank" class="btn-primary"><i
+                  class="fas fa-external-link-alt"></i> Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Raycasting 2D -->
+        <div class="project-card reveal">
+          <div class="project-image">
+            <span class="project-tag">Game Engine</span>
+            <video width="100%" height="100%" autoplay loop muted playsinline style="object-fit: cover;">
+              <source src="https://github.com/user-attachments/assets/6931c73e-0108-4024-9dde-12e4727fd515"
+                type="video/mp4">
+              Seu navegador não suporta a tag de vídeo.
+            </video>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Raycasting 2D Engine</h3>
+            <p class="project-description">Motor de renderização estilo Wolfenstein 3D implementado do zero. Simula
+              projeção 3D em ambiente 2D com texturas e colisão.</p>
+            <div class="project-tech">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">HTML5 Canvas</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/elen-c-sales/raycasting-2D" target="_blank" class="btn-primary"><i
+                  class="fab fa-github"></i> Code</a>
+              <a href="https://elen-c-sales.github.io/raycasting-2D/" target="_blank" class="btn-primary"><i
+                  class="fas fa-external-link-alt"></i> Demo</a>
             </div>
           </div>
         </div>
@@ -947,18 +1150,21 @@
         <div class="project-card reveal">
           <div class="project-image">
             <span class="project-tag">Visual</span>
-            <img src="https://github.com/elen-c-sales/fogo_doom/blob/main/demo.gif?raw=true" alt="Doom Fire" onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Doom+Fire'">
+            <img src="https://github.com/elen-c-sales/fogo_doom/blob/main/demo.gif?raw=true" alt="Doom Fire"
+              onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Doom+Fire'">
           </div>
           <div class="project-content">
             <h3 class="project-title">Doom Fire (Fogo Doom)</h3>
-            <p class="project-description">Estudo do efeito de fogo estilo Doom usando uma tabela de cores e uma simulacao discreta de calor, com dissipacao e vento.</p>
+            <p class="project-description">Estudo do efeito de fogo estilo Doom usando uma tabela de cores e uma
+              simulacao discreta de calor, com dissipacao e vento.</p>
             <div class="project-tech">
               <span class="tech-tag">Python</span>
               <span class="tech-tag">Pygame</span>
               <span class="tech-tag">Numpy</span>
             </div>
             <div class="project-actions">
-              <a href="https://github.com/elen-c-sales/fogo_doom" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Code</a>
+              <a href="https://github.com/elen-c-sales/fogo_doom" target="_blank" class="btn-primary"><i
+                  class="fab fa-github"></i> Code</a>
             </div>
           </div>
         </div>
@@ -966,18 +1172,22 @@
         <!-- Youtube Audio Downloader -->
         <div class="project-card reveal">
           <div class="project-image">
-            <span class="project-tag">Web App</span>
-            <img src="https://github.com/elen-c-sales/youtube-audio-downloader/blob/main/demo/screenshot.png?raw=true" alt="Youtube Audio Downloader" onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Project+Image'">
+            <span class="project-tag">Desktop App</span>
+            <img src="https://github.com/elen-c-sales/youtube-audio-downloader/blob/main/demo/screenshot.png?raw=true"
+              alt="Youtube Audio Downloader"
+              onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Project+Image'">
           </div>
           <div class="project-content">
             <h3 class="project-title">Youtube Audio Downloader</h3>
-            <p class="project-description">Uma interface simples para baixar áudios de vídeos do Youtube, construído com Tkinter.</p>
+            <p class="project-description">Uma interface simples para baixar áudios de vídeos do Youtube, construído com
+              Tkinter.</p>
             <div class="project-tech">
               <span class="tech-tag">Python</span>
               <span class="tech-tag">Flask</span>
             </div>
             <div class="project-actions">
-              <a href="https://github.com/elen-c-sales/youtube-audio-downloader" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Code</a>
+              <a href="https://github.com/elen-c-sales/youtube-audio-downloader" target="_blank" class="btn-primary"><i
+                  class="fab fa-github"></i> Code</a>
             </div>
           </div>
         </div>
@@ -986,19 +1196,45 @@
         <div class="project-card reveal">
           <div class="project-image">
             <span class="project-tag">Web App</span>
-            <img src="https://github.com/elen-c-sales/elen4devs/blob/main/screenshot.png?raw=true" alt="Elen4Devs" onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Project+Image'">
+            <img src="https://github.com/elen-c-sales/elen4devs/blob/main/screenshot.png?raw=true" alt="Elen4Devs"
+              onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Project+Image'">
           </div>
           <div class="project-content">
             <h3 class="project-title">Elen4Devs — Utils Suite</h3>
-            <p class="project-description">Suíte web responsiva com calculadoras e ferramentas para devs. Foco total em acessibilidade (ARIA) e performance.</p>
+            <p class="project-description">Suíte web responsiva com calculadoras e ferramentas para devs. Foco total em
+              acessibilidade (ARIA) e performance.</p>
             <div class="project-tech">
               <span class="tech-tag">JavaScript</span>
               <span class="tech-tag">A11y</span>
               <span class="tech-tag">CSS3</span>
             </div>
             <div class="project-actions">
-              <a href="https://github.com/elen-c-sales/elen4devs" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Code</a>
-              <a href="https://elen-c-sales.github.io/elen4devs/" target="_blank" class="btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+              <a href="https://github.com/elen-c-sales/elen4devs" target="_blank" class="btn-primary"><i
+                  class="fab fa-github"></i> Code</a>
+              <a href="https://elen-c-sales.github.io/elen4devs/" target="_blank" class="btn-primary"><i
+                  class="fas fa-external-link-alt"></i> Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Portfólio Pessoal -->
+        <div class="project-card reveal">
+          <div class="project-image">
+            <span class="project-tag">Web Dev</span>
+            <img src="./Macbook-Air-desktop.png" alt="Portfólio Pessoal" style="object-fit: cover;">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Portfólio Pessoal</h3>
+            <p class="project-description">Website pessoal interativo com design moderno (Glassmorphism), animações CSS
+              fluídas e estrutura otimizada para SEO e performance.</p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/elen-c-sales/elen-c-sales.github.io" target="_blank" class="btn-primary"><i
+                  class="fab fa-github"></i> Code</a>
             </div>
           </div>
         </div>
@@ -1007,18 +1243,49 @@
         <div class="project-card reveal">
           <div class="project-image">
             <span class="project-tag">Data Viz</span>
-            <img src="https://github.com/elen-c-sales/inadimplencia-shiny-dashboard/blob/main/captura_tela.png?raw=true" alt="Dashboard Inadimplência" onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Data+Viz'">
+            <img src="https://github.com/elen-c-sales/inadimplencia-shiny-dashboard/blob/main/captura_tela.png?raw=true"
+              alt="Dashboard Inadimplência"
+              onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Data+Viz'">
           </div>
           <div class="project-content">
             <h3 class="project-title">Inadimplência no Brasil</h3>
-            <p class="project-description">Dashboard interativo analisando dados do Banco Central com visualizações dinâmicas e séries temporais.</p>
+            <p class="project-description">Dashboard interativo analisando dados do Banco Central com visualizações
+              dinâmicas e séries temporais.</p>
             <div class="project-tech">
               <span class="tech-tag">R Shiny</span>
               <span class="tech-tag">Plotly</span>
               <span class="tech-tag">Estatística</span>
             </div>
             <div class="project-actions">
-              <a href="https://github.com/elen-c-sales/inadimplencia-shiny-dashboard" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Code</a>
+              <a href="https://github.com/elen-c-sales/inadimplencia-shiny-dashboard" target="_blank"
+                class="btn-primary"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Inadimplência vs Consumo -->
+        <div class="project-card reveal">
+          <div class="project-image">
+            <span class="project-tag">Data Analysis</span>
+            <img
+              src="https://github.com/elen-c-sales/inadimplencia-vs-consumo-brasil/blob/main/Inadimplência%20vs.%20Consumo%20das%20Famílias%20no%20Brasil.png?raw=true"
+              alt="Inadimplência vs Consumo"
+              onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Data+Analysis'">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Inadimplência vs. Consumo</h3>
+            <p class="project-description">Análise exploratória investigando a correlação entre o aumento da
+              inadimplência
+              e o consumo das famílias brasileiras (Dados BCB/IBGE).</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python Pandas</span>
+              <span class="tech-tag">Stats</span>
+              <span class="tech-tag">Matplotlib</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/elen-c-sales/inadimplencia-vs-consumo-brasil" target="_blank"
+                class="btn-primary"><i class="fab fa-github"></i> Code</a>
             </div>
           </div>
         </div>
@@ -1027,36 +1294,43 @@
         <div class="project-card reveal">
           <div class="project-image">
             <span class="project-tag">Mobile</span>
-            <img src="https://github.com/elen-c-sales/zencalc/blob/main/demonstracao.png?raw=true" alt="ZenCalc" onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Mobile+App'">
+            <img src="https://github.com/elen-c-sales/zencalc/blob/main/demonstracao.png?raw=true" alt="ZenCalc"
+              onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Mobile+App'">
           </div>
           <div class="project-content">
             <h3 class="project-title">ZenCalc Mobile</h3>
-            <p class="project-description">Calculadora minimalista com UX inspirada no ecossistema Apple. Design limpo e responsividade nativa.</p>
+            <p class="project-description">Calculadora minimalista com UX inspirada no ecossistema Apple. Design limpo e
+              responsividade nativa.</p>
             <div class="project-tech">
               <span class="tech-tag">React Native</span>
               <span class="tech-tag">Expo</span>
             </div>
             <div class="project-actions">
-              <a href="https://github.com/elen-c-sales/zencalc" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Code</a>
+              <a href="https://github.com/elen-c-sales/zencalc" target="_blank" class="btn-primary"><i
+                  class="fab fa-github"></i> Code</a>
             </div>
           </div>
         </div>
-        
+
         <!-- Projeto 6 -->
         <div class="project-card reveal">
           <div class="project-image">
             <span class="project-tag">Automação</span>
-            <img src="https://github.com/elen-c-sales/inmet-weather-dashboard/blob/main/docs/dashboard_example.png?raw=true" alt="Weather Dash" onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Weather+Dash'">
+            <img
+              src="https://github.com/elen-c-sales/inmet-weather-dashboard/blob/main/docs/dashboard_example.png?raw=true"
+              alt="Weather Dash" onerror="this.src='https://placehold.co/600x400/f3e5f5/6b4c7a?text=Weather+Dash'">
           </div>
           <div class="project-content">
             <h3 class="project-title">INMET Weather Dash</h3>
-            <p class="project-description">Pipeline completo de dados: Coleta automática (Scraping), processamento e visualização em tempo real.</p>
+            <p class="project-description">Pipeline completo de dados: Coleta automática (Scraping), processamento e
+              visualização em tempo real.</p>
             <div class="project-tech">
               <span class="tech-tag">Python Dash</span>
               <span class="tech-tag">Selenium</span>
             </div>
             <div class="project-actions">
-              <a href="https://github.com/elen-c-sales/inmet-weather-dashboard" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Code</a>
+              <a href="https://github.com/elen-c-sales/inmet-weather-dashboard" target="_blank" class="btn-primary"><i
+                  class="fab fa-github"></i> Code</a>
             </div>
           </div>
         </div>
@@ -1068,7 +1342,7 @@
     <div class="container">
       <h2 class="section-title reveal">Vamos Conversar?</h2>
       <p class="section-subtitle reveal">Estou sempre aberta a novas ideias e oportunidades</p>
-      
+
       <div class="contato-container reveal">
         <div class="contato-item">
           <i class="fas fa-envelope"></i>
@@ -1090,7 +1364,8 @@
   </section>
 
   <footer>
-    <p>© 2025 Elen Camila Sales Silva — Desenvolvido com <i class="fas fa-heart" style="color: var(--accent-primary);"></i> e Dados.</p>
+    <p>© 2025 Elen Camila Sales Silva — Desenvolvido com <i class="fas fa-heart"
+        style="color: var(--accent-primary);"></i> e Dados.</p>
   </footer>
 
   <script>
@@ -1176,4 +1451,5 @@
     });
   </script>
 </body>
+
 </html>
