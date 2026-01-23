@@ -4,7 +4,7 @@
 Este repositório contém o código-fonte do meu portfólio profissional, desenvolvido com foco em apresentar meus projetos de **Data Science**, **Machine Learning** e **Desenvolvimento Web**.
 
 ## Demo Online
-Acesse o portfólio interativo: [https://elen-c-sales.github.io/](https://elen-c-sales.github.io/)
+Acesse o portfólio interativo: [https://elen.is-a.dev/](https://elen.is-a.dev//)
 
 ## Visualização do Projeto
 O design utiliza o conceito de **Glassmorphism** e gradientes modernos, totalmente responsivo para dispositivos móveis e desktop.
