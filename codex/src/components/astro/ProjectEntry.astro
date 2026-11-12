@@ -24,8 +24,8 @@ const familyLabels: Record<string, string> = {
 };
 
 const statusLabels: Record<string, string> = {
-  enviado: 'Enviado',
-  'em-obras': 'Em Obras',
+  enviado: 'Publicado',
+  'em-obras': 'Em andamento',
   arquivado: 'Arquivado',
 };
 
@@ -39,6 +39,7 @@ const statusColors: Record<string, string> = {
 <article
   class="codex-card"
   data-family={data.family}
+  data-status={data.status}
   data-featured={data.featured}
   data-order={data.order}
   style="
@@ -202,7 +203,7 @@ const statusColors: Record<string, string> = {
         style="display: inline-flex; align-items: center; gap: var(--space-2); text-decoration: none; flex: 1; justify-content: center;"
       >
         <i class="fas fa-book-open" style="font-size: var(--text-base);"></i>
-        <span>Entrada</span>
+        <span>Ver projeto</span>
       </a>
     </footer>
   </div>
