@@ -37,7 +37,7 @@ export function ProjectFilter() {
     setIsClient(true);
     const params = new URLSearchParams(window.location.search);
     const family = params.get('family');
-    const initialFamily = (family && families.some(f => f.key === family)) ? family : 'all';
+    const initialFamily = (family && families.some(f => f.key === family)) ? (family as typeof activeFamily) : 'all';
     setActiveFamily(initialFamily as typeof activeFamily);
     // Aplica filtro inicial
     setTimeout(() => applyFilter(initialFamily, false), 0);
@@ -117,7 +117,6 @@ export function ProjectFilter() {
 
   return (
     <div
-      ref={gridRef} // <-- ref no container do grid para encontrar os cards
       style={{
         display: 'flex',
         flexWrap: 'wrap',
