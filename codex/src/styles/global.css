@@ -284,3 +284,26 @@ body.crt-active::after {
   body { background: white; color: black; }
   a { text-decoration: underline; }
 }
+
+/* ===========================================
+   FILTRO BESTIÁRIO (CSS global — não scoped)
+   =========================================== */
+#bestiario-grid [data-family] {
+  display: flex;
+}
+
+/* Quando filtro ativo (não "all"), esconde os que não match */
+html[data-filter-family="jogos"] #bestiario-grid [data-family]:not([data-family="jogos"]),
+html[data-filter-family="dados"] #bestiario-grid [data-family]:not([data-family="dados"]),
+html[data-filter-family="web"] #bestiario-grid [data-family]:not([data-family="web"]),
+html[data-filter-family="visao"] #bestiario-grid [data-family]:not([data-family="visao"]) {
+  display: none;
+}
+
+/* Ocultar arquivados por padrão */
+#bestiario-grid [data-status="arquivado"] {
+  display: none;
+}
+html[data-show-hidden="true"] #bestiario-grid [data-status="arquivado"] {
+  display: flex;
+}

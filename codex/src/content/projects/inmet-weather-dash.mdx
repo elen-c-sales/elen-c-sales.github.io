@@ -1,0 +1,27 @@
+---
+title: "INMET Weather Dash"
+tagline: "Pipeline completo: scraping INMET + processamento + visualização tempo real."
+family: dados
+year: 2024
+status: enviado
+tech: ["Python", "Dash", "Selenium", "Plotly"]
+links:
+  repo: "https://github.com/elen-c-sales/inmet-weather-dashboard"
+cover: "https://github.com/elen-c-sales/inmet-weather-dashboard/blob/main/docs/dashboard_example.png?raw=true"
+coverAlt: "INMET Weather Dash — pipeline de dados climáticos"
+arcaneNote: "o tempo não para"
+featured: false
+order: 13
+---
+
+# INMET Weather Dash
+
+Pipeline completo de dados: Coleta automática (Scraping), processamento e
+visualização em tempo real.
+
+## Detalhes técnicos
+- **Coleta:** Selenium (headless) — scraping INMET (estações automáticas)
+- **Processamento:** Pandas — limpeza, interpolação, agregação horária/diária
+- **Visualização:** Dash + Plotly — mapa interativo, séries temporais, alertas
+- **Deploy:** Docker + systemd timer (coleta a cada hora)
+- **Alertas:** thresholds configuráveis (temp, chuva, vento)
