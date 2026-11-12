@@ -18,14 +18,29 @@ export function ProjectFilter() {
   const [isClient, setIsClient] = useState(false);
   const secrets = useSecrets();
 
-  // Lê parâmetro da URL ao montar e seta dataset inicial
+  // Função para aplicar filtro diretamente nos cards
+  const applyFilter = (family: typeof activeFamily, hidden: boolean) => {
+    const grid = document.getElementById('bestiario-grid');
+    if (!grid) return;
+    const cards = grid.querySelectorAll('[data-family]');
+    cards.forEach((card) => {
+      const cardFamily = card.getAttribute('data-family');
+      const cardStatus = card.getAttribute('data-status');
+      const matchesFamily = family === 'all' || cardFamily === family;
+      const matchesHidden = hidden || cardStatus !== 'arquivado';
+      (card as HTMLElement).style.display = (matchesFamily && matchesHidden) ? 'flex' : 'none';
+    });
+  };
+
+  // Inicialização client-side
   useEffect(() => {
     setIsClient(true);
     const params = new URLSearchParams(window.location.search);
     const family = params.get('family');
     const initialFamily = (family && families.some(f => f.key === family)) ? family : 'all';
     setActiveFamily(initialFamily as typeof activeFamily);
-    document.documentElement.dataset.filterFamily = initialFamily;
+    // Aplica filtro inicial
+    setTimeout(() => applyFilter(initialFamily, false), 0);
   }, []);
 
   const triggerEvent = (name: string) => {
@@ -45,14 +60,14 @@ export function ProjectFilter() {
       }
       window.history.replaceState({}, '', url);
     }
-    document.documentElement.dataset.filterFamily = family;
+    applyFilter(family, showHidden);
     triggerEvent(`filter-${family}`);
   };
 
   const handleHiddenToggle = () => {
     const next = !showHidden;
     setShowHidden(next);
-    document.documentElement.dataset.showHidden = String(next);
+    applyFilter(activeFamily, next);
     triggerEvent(next ? 'show-hidden' : 'hide-hidden');
   };
 
@@ -102,6 +117,7 @@ export function ProjectFilter() {
 
   return (
     <div
+      ref={gridRef} // <-- ref no container do grid para encontrar os cards
       style={{
         display: 'flex',
         flexWrap: 'wrap',
