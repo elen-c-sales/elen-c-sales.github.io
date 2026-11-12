@@ -307,3 +307,161 @@ html[data-filter-family="visao"] #bestiario-grid [data-family]:not([data-family=
 html[data-show-hidden="true"] #bestiario-grid [data-status="arquivado"] {
   display: flex;
 }
+
+/* ===========================================
+   KNOWSODA-STYLE IMPROVEMENTS
+   =========================================== */
+
+/* Button hover states (knowsoda-style: translate + shadow) */
+.btn-codex:hover,
+.button:hover,
+a.btn-codex:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0 var(--shadow) !important;
+}
+
+.btn-codex:active,
+.button:active,
+a.btn-codex:active {
+  transform: translate(4px, 4px) !important;
+  box-shadow: none !important;
+}
+
+/* Card hover states (knowsoda-style: scale + glow + border) */
+.codex-card {
+  transition: transform var(--dur-med) var(--ease), 
+              box-shadow var(--dur-med) var(--ease),
+              border-color var(--dur-fast) var(--ease);
+}
+
+.codex-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 8px 8px 0 var(--shadow);
+  border-color: var(--accent);
+}
+
+/* Project entry specific hover */
+#bestiario-grid [data-family] {
+  transition: transform var(--dur-med) var(--ease),
+              box-shadow var(--dur-med) var(--ease),
+              border-color var(--dur-fast) var(--ease);
+}
+
+#bestiario-grid [data-family]:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 8px 8px 0 var(--shadow);
+  border-color: var(--accent);
+}
+
+/* Stagger animation for grid items */
+#bestiario-grid [data-family] {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slide-up var(--dur-med) var(--ease) forwards;
+}
+
+#bestiario-grid [data-family]:nth-child(1) { animation-delay: 0ms; }
+#bestiario-grid [data-family]:nth-child(2) { animation-delay: 50ms; }
+#bestiario-grid [data-family]:nth-child(3) { animation-delay: 100ms; }
+#bestiario-grid [data-family]:nth-child(4) { animation-delay: 150ms; }
+#bestiario-grid [data-family]:nth-child(5) { animation-delay: 200ms; }
+#bestiario-grid [data-family]:nth-child(6) { animation-delay: 250ms; }
+#bestiario-grid [data-family]:nth-child(7) { animation-delay: 300ms; }
+#bestiario-grid [data-family]:nth-child(8) { animation-delay: 350ms; }
+#bestiario-grid [data-family]:nth-child(9) { animation-delay: 400ms; }
+#bestiario-grid [data-family]:nth-child(10) { animation-delay: 450ms; }
+#bestiario-grid [data-family]:nth-child(11) { animation-delay: 500ms; }
+#bestiario-grid [data-family]:nth-child(12) { animation-delay: 550ms; }
+#bestiario-grid [data-family]:nth-child(13) { animation-delay: 600ms; }
+#bestiario-grid [data-family]:nth-child(14) { animation-delay: 650ms; }
+#bestiario-grid [data-family]:nth-child(15) { animation-delay: 700ms; }
+#bestiario-grid [data-family]:nth-child(16) { animation-delay: 750ms; }
+
+/* Scroll reveal improvements */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pixel art image rendering */
+.pixel-art,
+img[loading="lazy"] {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Focus visible improvements */
+:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+}
+
+/* Smooth theme transitions (respects prefers-reduced-motion) */
+@media (prefers-reduced-motion: no-preference) {
+  *,
+  *::before,
+  *::after {
+    transition: background-color var(--dur-med) var(--ease),
+                color var(--dur-med) var(--ease),
+                border-color var(--dur-med) var(--ease),
+                box-shadow var(--dur-med) var(--ease);
+  }
+}
+
+/* Skill bar animation */
+.skill-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 1.2s var(--ease);
+  width: 0;
+}
+
+.skill-bar-fill.animate {
+  width: var(--skill-width, 0%);
+}
+
+/* Theme color meta tags (match knowsoda style) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --theme-color: #14101c;
+  }
+}
+:root[data-theme="dark"] {
+  --theme-color: #14101c;
+}
+:root[data-theme="light"], :root:not([data-theme="dark"]) {
+  --theme-color: #f3ecff;
+}
+
+/* Scrollbar styling (knowsoda-style) */
+html {
+  scrollbar-color: var(--accent-ink) var(--divider);
+  scrollbar-width: auto;
+}
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track {
+  background: var(--divider);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-ink);
+  border: 2px solid var(--outline);
+  border-radius: 0;
+}
+::-webkit-scrollbar-corner {
+  background: var(--paper);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
