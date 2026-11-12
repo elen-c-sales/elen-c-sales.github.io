@@ -68,3 +68,15 @@ lerna-debug.log*
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# Local docs (keep locally, not in repo)
+ROADMAP.md
+QUICKSTART.md
+*.local.md
+
+# Old portfolio assets (removed)
+Macbook-Air-desktop.png
+iPhone-13-PRO-mobile.png
+index.html
+perfil.jpg
+CNAME
