@@ -1,53 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="crispEdges">
-  <defs>
-    <linearGradient id="ec-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff2a85" />
-      <stop offset="50%" stop-color="#8b5cf6" />
-      <stop offset="100%" stop-color="#06b6d4" />
-    </linearGradient>
-  </defs>
-
-  <!-- Base escura preenchendo TUDO -->
-  <rect width="32" height="32" fill="#0d0614" />
+  <!-- Sombra roxa profunda compartilhada (escalada 2x) -->
+  <path fill="#3b0764" d="M6 8h10v4H10v2h4v4H10v2h6v4H6V8zm14 0h8v4h-4v8h4v4h-8V8z" />
   
-  <!-- Borda interna sutil (1px) -->
-  <rect x="0" y="0" width="32" height="1" fill="#1d0c30" />
-  <rect x="0" y="31" width="32" height="1" fill="#1d0c30" />
-  <rect x="0" y="0" width="1" height="32" fill="#1d0c30" />
-  <rect x="31" y="0" width="1" height="32" fill="#1d0c30" />
-
-  <!-- E - ocupa lado esquerdo (x=2 a 15) - CENTRALIZADO VERTICALMENTE -->
-  <rect x="2" y="6" width="13" height="1" fill="#FFC94D"/>  <!-- topo -->
-  <rect x="2" y="7" width="1" height="1" fill="#17121F"/>
-  <rect x="15" y="7" width="1" height="1" fill="#17121F"/>
-  <rect x="2" y="7" width="1" height="18" fill="#17121F"/>  <!-- lateral esquerda -->
-  <rect x="2" y="16" width="11" height="1" fill="#FFC94D"/>  <!-- meio -->
-  <rect x="2" y="17" width="1" height="1" fill="#17121F"/>
-  <rect x="2" y="24" width="1" height="1" fill="#17121F"/>
-  <rect x="2" y="18" width="1" height="7" fill="#17121F"/>  <!-- lateral esquerda baixa -->
-  <rect x="2" y="24" width="13" height="1" fill="#FFC94D"/>  <!-- base -->
-  <rect x="2" y="25" width="1" height="1" fill="#17121F"/>
-  <rect x="15" y="25" width="1" height="1" fill="#17121F"/>
+  <!-- Letra E (Rosa Choque) - escalada 2x -->
+  <path fill="#f43f5e" d="M4 6h10v4H8v2h4v2H8v2h6v4H4V6z" />
   
-  <!-- C - ocupa lado direito (x=17 a 30) - CENTRALIZADO VERTICALMENTE -->
-  <rect x="17" y="6" width="13" height="1" fill="#FFC94D"/>  <!-- topo -->
-  <rect x="17" y="7" width="1" height="1" fill="#17121F"/>
-  <rect x="30" y="7" width="1" height="1" fill="#17121F"/>
-  <rect x="17" y="7" width="1" height="18" fill="#17121F"/>  <!-- lateral esquerda do C -->
-  <rect x="17" y="24" width="13" height="1" fill="#FFC94D"/>  <!-- base -->
-  <rect x="17" y="25" width="1" height="1" fill="#17121F"/>
-  <rect x="30" y="25" width="1" height="1" fill="#17121F"/>
-  <rect x="30" y="7" width="1" height="18" fill="#17121F"/>  <!-- lateral direita do C -->
-
-  <!-- Highlights sutis nos cantos -->
-  <rect x="2" y="6" width="1" height="1" fill="#ffffff" fill-opacity="0.5" />
-  <rect x="30" y="6" width="1" height="1" fill="#ffffff" fill-opacity="0.5" />
-  
-  <defs>
-    <linearGradient id="ec-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff2a85" />
-      <stop offset="50%" stop-color="#8b5cf6" />
-      <stop offset="100%" stop-color="#06b6d4" />
-    </linearGradient>
-  </defs>
+  <!-- Letra C (Azul Elétrico) - escalada 2x -->
+  <path fill="#38bdf8" d="M18 6h8v4h-4v8h4v4H18V6z" />
 </svg>
