@@ -7,26 +7,42 @@
     </linearGradient>
   </defs>
 
-  <!-- Base escura com cantos chanfrados (estilo pixel) -->
-  <path fill="#0d0614" d="M2 0h28v1h1v1h1v12h-1v1h-1v1H2v-1H1v-1H0V2h1V1h1V0z" />
+  <!-- Base escura preenchendo TUDO -->
+  <rect width="32" height="32" fill="#0d0614" />
   
-  <!-- Borda interna sutil -->
-  <path fill="#1d0c30" d="M2 1h28v1h1v12h-1v1H2v-1H1V2h1V1zm0 1v12h28V2H2z" />
+  <!-- Borda interna sutil (1px) -->
+  <rect x="0" y="0" width="32" height="1" fill="#1d0c30" />
+  <rect x="0" y="31" width="32" height="1" fill="#1d0c30" />
+  <rect x="0" y="0" width="1" height="32" fill="#1d0c30" />
+  <rect x="31" y="0" width="1" height="32" fill="#1d0c30" />
 
-  <!-- Sombra projetada das letras (efeito 3D pixelado) - deslocada 1px down-right -->
-  <path fill="#2a0440" d="M5 4h6v1H6v2h3v1H6v2h4v1H4V4zm7 0h5v1h-4v5h4v1h-5V4z" transform="translate(1, 1)" />
-
-  <!-- Iniciais "EC" com gradiente synthwave -->
-  <path fill="url(#ec-grad)" d="
-    M4 3h6v1H5v2h3v1H5v2h4v1H3V3z
-    M10 3h5v1h-4v5h4v1H10V3z
-  " />
-
-  <!-- Highlights nos cantos superiores -->
-  <rect x="4" y="3" width="1" height="1" fill="#ffffff" fill-opacity="0.7" />
-  <rect x="10" y="3" width="1" height="1" fill="#ffffff" fill-opacity="0.7" />
+  <!-- E - ocupa lado esquerdo (x=2 a 15) - CENTRALIZADO VERTICALMENTE -->
+  <rect x="2" y="6" width="13" height="1" fill="#FFC94D"/>  <!-- topo -->
+  <rect x="2" y="7" width="1" height="1" fill="#17121F"/>
+  <rect x="15" y="7" width="1" height="1" fill="#17121F"/>
+  <rect x="2" y="7" width="1" height="18" fill="#17121F"/>  <!-- lateral esquerda -->
+  <rect x="2" y="16" width="11" height="1" fill="#FFC94D"/>  <!-- meio -->
+  <rect x="2" y="17" width="1" height="1" fill="#17121F"/>
+  <rect x="2" y="24" width="1" height="1" fill="#17121F"/>
+  <rect x="2" y="18" width="1" height="7" fill="#17121F"/>  <!-- lateral esquerda baixa -->
+  <rect x="2" y="24" width="13" height="1" fill="#FFC94D"/>  <!-- base -->
+  <rect x="2" y="25" width="1" height="1" fill="#17121F"/>
+  <rect x="15" y="25" width="1" height="1" fill="#17121F"/>
   
-  <!-- Definição do gradiente -->
+  <!-- C - ocupa lado direito (x=17 a 30) - CENTRALIZADO VERTICALMENTE -->
+  <rect x="17" y="6" width="13" height="1" fill="#FFC94D"/>  <!-- topo -->
+  <rect x="17" y="7" width="1" height="1" fill="#17121F"/>
+  <rect x="30" y="7" width="1" height="1" fill="#17121F"/>
+  <rect x="17" y="7" width="1" height="18" fill="#17121F"/>  <!-- lateral esquerda do C -->
+  <rect x="17" y="24" width="13" height="1" fill="#FFC94D"/>  <!-- base -->
+  <rect x="17" y="25" width="1" height="1" fill="#17121F"/>
+  <rect x="30" y="25" width="1" height="1" fill="#17121F"/>
+  <rect x="30" y="7" width="1" height="18" fill="#17121F"/>  <!-- lateral direita do C -->
+
+  <!-- Highlights sutis nos cantos -->
+  <rect x="2" y="6" width="1" height="1" fill="#ffffff" fill-opacity="0.5" />
+  <rect x="30" y="6" width="1" height="1" fill="#ffffff" fill-opacity="0.5" />
+  
   <defs>
     <linearGradient id="ec-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ff2a85" />
