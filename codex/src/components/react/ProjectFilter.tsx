@@ -18,14 +18,14 @@ export function ProjectFilter() {
   const [isClient, setIsClient] = useState(false);
   const secrets = useSecrets();
 
-  // Lê parâmetro da URL ao montar
+  // Lê parâmetro da URL ao montar e seta dataset inicial
   useEffect(() => {
     setIsClient(true);
     const params = new URLSearchParams(window.location.search);
     const family = params.get('family');
-    if (family && families.some(f => f.key === family)) {
-      setActiveFamily(family as typeof activeFamily);
-    }
+    const initialFamily = (family && families.some(f => f.key === family)) ? family : 'all';
+    setActiveFamily(initialFamily as typeof activeFamily);
+    document.documentElement.dataset.filterFamily = initialFamily;
   }, []);
 
   const triggerEvent = (name: string) => {
