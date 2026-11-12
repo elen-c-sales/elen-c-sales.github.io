@@ -54,6 +54,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: codex/package-lock.json
       - run: cd codex && npm ci
+      - run: cd codex && npm run build
       - run: cd codex && npx @lhci/cli@latest autorun
 
   deploy:
