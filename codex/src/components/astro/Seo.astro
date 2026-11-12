@@ -1,0 +1,64 @@
+---
+// src/components/astro/Seo.astro — Componente SEO reutilizável
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  url?: string;
+  type?: 'website' | 'article';
+  noIndex?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  tags?: string[];
+}
+
+const {
+  title,
+  description,
+  image = '/og-default.png',
+  url = Astro.url.pathname,
+  type = 'website',
+  noIndex = false,
+  publishedTime,
+  modifiedTime,
+  author = 'Elen Camila Sales Silva',
+  tags = [],
+} = Astro.props;
+
+const canonicalURL = new URL(url, Astro.site);
+const imageURL = new URL(image, Astro.site);
+---
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': type === 'article' ? 'BlogPosting' : 'WebPage',
+  headline: title,
+  description: description,
+  url: canonicalURL.toString(),
+  image: imageURL.toString(),
+  author: {
+    '@type': 'Person',
+    name: author,
+    url: 'https://elen.is-a.dev',
+  },
+  publisher: {
+    '@type': 'Person',
+    name: author,
+  },
+  datePublished: publishedTime,
+  dateModified: modifiedTime ?? publishedTime,
+  keywords: tags.join(', '),
+  inLanguage: 'pt-BR',
+}, null, 2)} />
+
+<!-- Meta tags adicionais para artigo -->
+{type === 'article' && publishedTime && (
+  <>
+    <meta property="article:published_time" content={publishedTime} />
+    <meta property="article:modified_time" content={modifiedTime ?? publishedTime} />
+    <meta property="article:author" content="https://elen.is-a.dev" />
+    {tags.map(tag => <meta property="article:tag" content={tag} />)}
+  </>
+)}

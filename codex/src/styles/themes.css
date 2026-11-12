@@ -1,0 +1,161 @@
+/* src/styles/themes.css — temas aplicados via data-theme no <html> */
+@import './tokens.css';
+
+/* Tema claro: manuscript */
+[data-theme="manuscript"] {
+  --ink: var(--p-ink);
+  --paper: var(--p-paper);
+  --paper-2: #ebe4f7;
+  --accent-ink: #6b4ce0;
+  --line: #d8cfe8;
+  --line-strong: var(--p-arcane);
+  --ink-soft: var(--p-ink-soft);
+}
+
+/* Tema escuro: candle (default) */
+[data-theme="candle"] {
+  --ink: #e9e2f7;
+  --paper: #14101c;
+  --paper-2: #1e182a;
+  --accent-ink: #b3a3ff;
+  --line: #3a2f52;
+  --line-strong: var(--p-arcane);
+  --ink-soft: #9b8ac7;
+}
+
+/* Tema secreto: void (desbloqueável via Konami) */
+[data-theme="void"] {
+  --ink: #c9c4d4;
+  --paper: #0b0a12;
+  --paper-2: #12101a;
+  --accent-ink: #7ef0c9;
+  --line: #1f1d2e;
+  --line-strong: #7ef0c9;
+  --ink-soft: #6b5f8a;
+}
+
+/* Transição suave entre temas (respeita prefers-reduced-motion) */
+@media (prefers-reduced-motion: no-preference) {
+  *,
+  *::before,
+  *::after {
+    transition: background-color var(--dur-med) var(--ease),
+                color var(--dur-med) var(--ease),
+                border-color var(--dur-med) var(--ease),
+                box-shadow var(--dur-med) var(--ease);
+  }
+}
+
+/* Utilitários pixel */
+.pixel-corners {
+  clip-path: polygon(
+    0 var(--grid), var(--grid) var(--grid), var(--grid) 0,
+    calc(100% - var(--grid)) 0, calc(100% - var(--grid)) var(--grid), 100% var(--grid),
+    100% calc(100% - var(--grid)), calc(100% - var(--grid)) calc(100% - var(--grid)),
+    calc(100% - var(--grid)) 100%, var(--grid) 100%, var(--grid) calc(100% - var(--grid)), 0 calc(100% - var(--grid))
+  );
+}
+
+.pixel-border {
+  border: 2px solid var(--line-strong);
+  box-shadow: var(--shadow-1);
+}
+
+/* Botão estilo códice */
+.btn-codex {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: var(--space-2) var(--space-4);
+  border: 2px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  position: relative;
+  transition: transform var(--dur-fast) var(--ease),
+              box-shadow var(--dur-fast) var(--ease),
+              background var(--dur-fast) var(--ease);
+}
+
+.btn-codex:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-1);
+  background: var(--paper-2);
+}
+
+.btn-codex:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+.btn-codex:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+}
+
+/* Card estilo grimório */
+.codex-card {
+  background: var(--paper);
+  border: 2px solid var(--line);
+  box-shadow: var(--shadow-1);
+  padding: var(--space-5);
+  position: relative;
+}
+
+.codex-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 1px solid var(--line-strong);
+  pointer-events: none;
+}
+
+/* Capitular (drop cap) para capítulos */
+.capitular::first-letter {
+  font-family: var(--font-display);
+  font-size: 4em;
+  line-height: 0.85;
+  float: left;
+  margin: 0 var(--space-3) var(--space-2) 0;
+  color: var(--accent);
+  text-shadow: var(--shadow-1);
+}
+
+/* Marginalia (notas de rodapé/lateral) */
+.marginalia {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--ink-soft);
+  line-height: 1.5;
+  border-left: 2px solid var(--line-strong);
+  padding-left: var(--space-3);
+  margin: var(--space-4) 0;
+  font-style: italic;
+}
+
+/* Scrollbar estilo terminal */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+  border-left: 2px solid var(--line);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border: 2px solid var(--paper);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-ink);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--paper);
+}

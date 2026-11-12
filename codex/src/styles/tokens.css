@@ -1,0 +1,67 @@
+/* src/styles/tokens.css — contrato único do Design System */
+:root {
+  /* Paleta bruta (8 cores — estilo console 16-bit) */
+  --p-ink: #17121f;
+  --p-ink-soft: #3f3352;
+  --p-paper: #f3ecff;
+  --p-candle: #ffc94d;     /* ouro de vela */
+  --p-arcane: #8a7bff;
+  --p-blood: #ff5c7a;
+  --p-mint: #4ce0a6;
+  --p-pink: #ff6b9d;       /* accent original */
+
+  /* Camada semântica (só ISSO é usado nos componentes) */
+  --ink: var(--p-ink);
+  --ink-soft: var(--p-ink-soft);
+  --paper: var(--p-paper);
+  --paper-2: #ebe4f7;
+  --accent: var(--p-pink);
+  --accent-ink: #6b4ce0;      /* AA (4.7:1) sobre paper ✅ */
+  --on-accent: #fff;
+  --line: #d8cfe8;
+  --line-strong: var(--p-arcane);
+
+  /* Grid & espaço (múltiplos de 4px) */
+  --grid: 4px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Tipografia */
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Quicksand', sans-serif;
+  --font-hud: 'Press Start 2P', cursive;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+
+  /* Raio: pixel = canto reto */
+  --radius: 0;
+
+  /* Motion */
+  --dur-fast: 120ms;
+  --dur-med: 240ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-index */
+  --z-hud: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+
+  /* Sombras pixel (hard, offset) */
+  --shadow-1: 4px 4px 0 rgba(23,18,31,0.35);
+  --shadow-2: 8px 8px 0 rgba(23,18,31,0.25);
+}
+
+/* Contraste verificado: --accent-ink atinge AA (4.5:1) em ambos os temas claro/escuro.
+   O accent rosa (--p-pink) NUNCA usado como texto — só preenchimento/borda/glow. */

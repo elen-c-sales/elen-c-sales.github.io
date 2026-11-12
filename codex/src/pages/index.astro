@@ -1,0 +1,354 @@
+---
+// src/pages/index.astro — Home: monta capítulos, passa dados para ilhas
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/astro/BaseHead.astro';
+import Codex from '../components/astro/Codex.astro';
+import ChapterHeading from '../components/astro/ChapterHeading.astro';
+import ProjectEntry from '../components/astro/ProjectEntry.astro';
+import Marginalia from '../components/astro/Marginalia.astro';
+import { ProjectFilter } from '../components/react/ProjectFilter.tsx';
+import { skills, skillCategories, getFeaturedSkills } from '../data/skills';
+import '../styles/global.css';
+
+const projects = await getCollection('projects', ({ data }) => data.status !== 'arquivado');
+const featuredProjects = projects
+  .filter(p => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const allProjects = projects
+  .sort((a, b) => a.data.order - b.data.order || b.data.year - a.data.year);
+
+const featuredSkills = getFeaturedSkills(8);
+---
+
+<Codex
+  title="Elen Camila Sales Silva — Códice de Engenharia"
+  description="Portfólio de Elen Camila: Data Science, Machine Learning, Game Dev, Full-Stack. Grimório interativo com segredos, terminal e estética pixel."
+>
+  <!-- PRÓLOGO -->
+  <section id="prologo" aria-labelledby="prologo-title">
+    <div class="container">
+      <ChapterHeading number="00" title="Prólogo" subtitle="Sobre a guardiã do códice" icon="fas fa-feather" />
+
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-8); align-items: start;">
+        <!-- Avatar + Stats -->
+        <div style="text-align: center;">
+          <div style="position: relative; display: inline-block; margin-bottom: var(--space-6);">
+            <img
+              src="/perfil.jpg"
+              alt="Elen Camila Sales Silva"
+              style="
+                width: 160px;
+                height: 160px;
+                border-radius: 50%;
+                border: 4px solid var(--line-strong);
+                box-shadow: var(--shadow-2);
+                object-fit: cover;
+              "
+              onerror="this.src='https://ui-avatars.com/api/?name=Elen+Sales&background=8a7bff&color=fff&size=200'"
+            />
+            <div
+              data-secret="diabrete"
+              style="
+                position: absolute;
+                bottom: -8px;
+                right: -8px;
+                width: 48px;
+                height: 48px;
+                background: var(--accent);
+                border: 2px solid var(--paper);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: var(--shadow-1);
+                animation: bounce 2s infinite;
+              "
+              title="Clique 5 vezes para um segredo..."
+              aria-label="Diabrete do Pomodoro - clique para interagir"
+            >
+              <i class="fas fa-ghost" style="font-size: var(--text-lg); color: var(--on-accent);"></i>
+            </div>
+          </div>
+
+          <h1 style="font-family: var(--font-display); font-size: var(--text-3xl); font-weight: 700; color: var(--ink); margin-bottom: var(--space-2);">
+            Elen Camila Sales Silva
+          </h1>
+          <p style="color: var(--accent); font-weight: 600; margin-bottom: var(--space-4);">
+            Dev Full-Stack · Data Science · Game Dev
+          </p>
+
+          <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-6);">
+            <a href="https://github.com/elen-c-sales" target="_blank" rel="noopener" class="btn-codex" style="gap: var(--space-2);">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/elen-camila-sales/" target="_blank" rel="noopener" class="btn-codex" style="gap: var(--space-2);">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="mailto:e.camila.sales@gmail.com" class="btn-codex" style="gap: var(--space-2);">
+              <i class="fas fa-envelope"></i> Email
+            </a>
+          </div>
+
+          <!-- Stats HUD -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); text-align: center;">
+            <div style="padding: var(--space-3); background: var(--paper-2); border: 2px solid var(--line);">
+              <div style="font-family: var(--font-hud); font-size: var(--text-2xl); color: var(--accent);">17</div>
+              <div style="font-family: var(--font-body); font-size: var(--text-xs); color: var(--ink-soft);">Projetos</div>
+            </div>
+            <div style="padding: var(--space-3); background: var(--paper-2); border: 2px solid var(--line);">
+              <div style="font-family: var(--font-hud); font-size: var(--text-2xl); color: var(--accent);">9</div>
+              <div style="font-family: var(--font-body); font-size: var(--text-xs); color: var(--ink-soft);">Tecnologias</div>
+            </div>
+            <div style="padding: var(--space-3); background: var(--paper-2); border: 2px solid var(--line);">
+              <div style="font-family: var(--font-hud); font-size: var(--text-2xl); color: var(--accent);">3+</div>
+              <div style="font-family: var(--font-body); font-size: var(--text-xs); color: var(--ink-soft);">Anos Exp.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div>
+          <p style="font-size: var(--text-lg); color: var(--ink-soft); line-height: 1.8; margin-bottom: var(--space-4);">
+            Desenvolvedora versátil com experiência em desenvolvimento de jogos (Pygame), análise de dados
+            (Python, R, SQL) e aplicações full-stack. Gosto de explorar desde algoritmos visuais e gráficos
+            interativos até modelagem preditiva e dashboards analíticos.
+          </p>
+          <p style="font-size: var(--text-base); color: var(--ink-soft); line-height: 1.8; margin-bottom: var(--space-6);">
+            Meus projetos vão de recriações de clássicos como Asteroids e efeitos visuais do Doom, até sistemas
+            completos de dados com scraping, processamento e visualização em tempo real. O foco está sempre em criar
+            experiências que funcionam bem e resolvem problemas reais.
+          </p>
+
+          <Marginalia align="right">
+            "O código é feitiço. A documentação, grimório. O debug, exorcismo."
+          </Marginalia>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BESTIÁRIO -->
+  <section id="bestiario" aria-labelledby="bestiario-title">
+    <div class="container">
+      <ChapterHeading number="01" title="Bestiário" subtitle="Catálogo de projetos invocados" icon="fas fa-book" />
+
+      <!-- Filtro (ilha React) -->
+      <ProjectFilter client:visible />
+
+      <!-- Grid de projetos -->
+      <div
+        id="bestiario-grid"
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+          gap: var(--space-5);
+        "
+      >
+        {allProjects.map(project => (
+          <ProjectEntry project={project} />
+        ))}
+      </div>
+
+      {allProjects.length === 0 && (
+        <div style="text-align: center; padding: var(--space-8); color: var(--ink-soft);">
+          <i class="fas fa-search" style="font-size: var(--text-4xl); margin-bottom: var(--space-4); opacity: 0.5;"></i>
+          <p>Nenhum projeto encontrado neste grimório.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- GRIMÓRIO -->
+  <section id="rimorio" aria-labelledby="rimorio-title">
+    <div class="container">
+      <ChapterHeading number="02" title="Grimório" subtitle="Feitiços dominados pela guardiã" icon="fas fa-magic" />
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-5);">
+        {skillCategories.map(category => {
+          const categorySkills = skills.filter(s => s.category === category.key);
+          return (
+            <div class="codex-card" style="height: 100%;">
+              <h3 style="
+                font-family: var(--font-display);
+                font-size: var(--text-xl);
+                color: var(--ink);
+                margin-bottom: var(--space-4);
+                display: flex;
+                align-items: center;
+                gap: var(--space-2);
+                padding-bottom: var(--space-3);
+                border-bottom: 2px solid var(--line);
+              ">
+                <i class={category.icon} style="color: var(--accent);"></i>
+                {category.label}
+              </h3>
+              <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                {categorySkills.map(skill => (
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: var(--space-3);
+                      padding: var(--space-2);
+                      background: var(--paper-2);
+                      border: 1px solid var(--line);
+                      transition: all var(--dur-fast) var(--ease);
+                    "
+                    onmouseover="this.style.borderColor='var(--accent)'; this.style.background='var(--paper)'"
+                    onmouseout="this.style.borderColor='var(--line)'; this.style.background='var(--paper-2)'"
+                  >
+                    <i class={skill.icon} style="font-size: var(--text-lg); color: var(--accent); width: 28px; text-align: center;"></i>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        {skill.name}
+                      </div>
+                      <div style="
+                        height: 6px;
+                        background: var(--line);
+                        border-radius: 3px;
+                        overflow: hidden;
+                        margin-top: var(--space-1);
+                      ">
+                        <div
+                          style="
+                            height: 100%;
+                            width: {skill.proficiency * 20}%;
+                            background: var(--accent);
+                            transition: width var(--dur-med) var(--ease);
+                          "
+                        ></div>
+                      </div>
+                    </div>
+                    <span style="
+                      font-family: var(--font-hud);
+                      font-size: var(--text-xs);
+                      color: var(--accent);
+                      min-width: 24px;
+                    ">
+                      {skill.proficiency}/5
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- CORRESPONDÊNCIA -->
+  <section id="correspondencia" aria-labelledby="correspondencia-title">
+    <div class="container">
+      <ChapterHeading number="03" title="Correspondência" subtitle="Envie uma coruja para a torre" icon="fas fa-envelope" />
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-5);">
+        <a
+          href="mailto:e.camila.sales@gmail.com"
+          class="codex-card"
+          style="text-decoration: none; text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-3); transition: transform var(--dur-fast);"
+          onmouseover="this.style.transform='translateY(-4px)'"
+          onmouseout="this.style.transform='none'"
+        >
+          <i class="fas fa-envelope" style="font-size: var(--text-4xl); color: var(--accent);"></i>
+          <h3 style="font-family: var(--font-display); font-size: var(--text-xl); color: var(--ink);">E-mail</h3>
+          <p style="color: var(--ink-soft); word-break: break-all;">e.camila.sales@gmail.com</p>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/elen-camila-sales/"
+          target="_blank"
+          rel="noopener"
+          class="codex-card"
+          style="text-decoration: none; text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-3); transition: transform var(--dur-fast);"
+          onmouseover="this.style.transform='translateY(-4px)'"
+          onmouseout="this.style.transform='none'"
+        >
+          <i class="fab fa-linkedin" style="font-size: var(--text-4xl); color: var(--accent);"></i>
+          <h3 style="font-family: var(--font-display); font-size: var(--text-xl); color: var(--ink);">LinkedIn</h3>
+          <p style="color: var(--ink-soft);">/elen-camila-sales</p>
+        </a>
+
+        <a
+          href="https://github.com/elen-c-sales"
+          target="_blank"
+          rel="noopener"
+          class="codex-card"
+          style="text-decoration: none; text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-3); transition: transform var(--dur-fast);"
+          onmouseover="this.style.transform='translateY(-4px)'"
+          onmouseout="this.style.transform='none'"
+        >
+          <i class="fab fa-github" style="font-size: var(--text-4xl); color: var(--accent);"></i>
+          <h3 style="font-family: var(--font-display); font-size: var(--text-xl); color: var(--ink);">GitHub</h3>
+          <p style="color: var(--ink-soft);">/elen-c-sales</p>
+        </a>
+      </div>
+
+      <Marginalia align="right" style="margin-top: var(--space-6);">
+        "Toda mensagem recebida é lida. Nem toda resposta é imediata — a guardiã também dorme."
+      </Marginalia>
+    </div>
+  </section>
+
+  <!-- SecretsEngine Island (hydrated) -->
+  <div id="secrets-engine" style="display: contents;">
+    <script type="module">
+      import { SecretsProvider } from '../components/react/SecretsEngine';
+      import { hydrate } from 'react-dom/client';
+
+      // Cria container para o portal
+      const container = document.createElement('div');
+      container.id = 'secrets-portal';
+      document.body.appendChild(container);
+
+      // Hydrate no container
+      const root = hydrate(container);
+    </script>
+  </div>
+</Codex>
+
+<style>
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+
+  /* Filtro CSS-only para projetos */
+  #bestiario-grid [data-family]:not([data-family="all"]) {
+    display: none;
+  }
+  #bestiario-grid [data-family="all"] {
+    display: flex;
+  }
+  html[data-filter-family="all"] #bestiario-grid [data-family] {
+    display: flex;
+  }
+  html[data-filter-family="jogos"] #bestiario-grid [data-family="jogos"],
+  html[data-filter-family="dados"] #bestiario-grid [data-family="dados"],
+  html[data-filter-family="web"] #bestiario-grid [data-family="web"],
+  html[data-filter-family="visao"] #bestiario-grid [data-family="visao"] {
+    display: flex;
+  }
+
+  /* Ocultar arquivados por padrão */
+  #bestiario-grid [data-status="arquivado"] {
+    display: none;
+  }
+  html[data-show-hidden="true"] #bestiario-grid [data-status="arquivado"] {
+    display: flex;
+  }
+
+  /* Focus visible */
+  :focus-visible {
+    outline: 2px solid var(--accent-ink);
+    outline-offset: 2px;
+  }
+</style>

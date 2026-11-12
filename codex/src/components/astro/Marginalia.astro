@@ -1,0 +1,29 @@
+---
+// src/components/astro/Marginalia.astro — Nota marginal (lateral/rodapé)
+interface Props {
+  children: any;
+  align?: 'left' | 'right';
+  size?: 'sm' | 'md';
+  style?: string;
+}
+
+const { children, align = 'left', size = 'md', style = '' } = Astro.props;
+---
+
+<aside
+  class="marginalia"
+  style="
+    font-family: var(--font-body);
+    font-size: {size === 'sm' ? 'var(--text-xs)' : 'var(--text-sm)'};
+    color: var(--ink-soft);
+    line-height: 1.6;
+    border-left: 2px solid var(--line-strong);
+    padding-left: var(--space-3);
+    margin: var(--space-4) 0;
+    font-style: italic;
+    {align === 'right' && 'border-left: none; border-right: 2px solid var(--line-strong); padding-left: 0; padding-right: var(--space-3); text-align: right;'}
+    {style}
+  "
+>
+  <slot>{children}</slot>
+</aside>

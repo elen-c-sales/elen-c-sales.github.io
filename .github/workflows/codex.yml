@@ -1,0 +1,68 @@
+name: Codex CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'codex/**'
+      - '.github/workflows/codex.yml'
+  pull_request:
+    paths:
+      - 'codex/**'
+      - '.github/workflows/codex.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: codex
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: codex/package-lock.json
+      - run: npm ci
+      - run: npm run check          # astro check + tsc --noEmit
+      - run: npm run test           # vitest run
+      - run: npm run build          # astro build
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          path: codex/dist
+
+  lighthouse:
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: codex/package-lock.json
+      - run: cd codex && npm ci
+      - run: cd codex && npx @lhci/cli@latest autorun
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: [quality, lighthouse]
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

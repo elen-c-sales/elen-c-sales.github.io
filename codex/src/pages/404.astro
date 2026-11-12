@@ -1,0 +1,61 @@
+---
+// src/pages/404.astro — Página não encontrada
+import Codex from '../components/astro/Codex.astro';
+import ChapterHeading from '../components/astro/ChapterHeading.astro';
+import Marginalia from '../components/astro/Marginalia.astro';
+import '../styles/global.css';
+---
+
+<Codex
+  title="Perdido no Abismo — 404"
+  description="A página que você procura não existe neste códice."
+  noIndex={true}
+>
+  <article style="max-width: 600px; margin: 0 auto; padding: var(--space-10) var(--space-4); text-align: center;">
+    <ChapterHeading number="404" title="Perdido no Abismo" subtitle="Esta entrada não existe no grimório" icon="fas fa-compass" />
+
+    <div style="margin: var(--space-8) 0;">
+      <div style="
+        font-family: var(--font-hud);
+        font-size: clamp(6rem, 20vw, 12rem);
+        color: var(--accent);
+        text-shadow: var(--shadow-2);
+        line-height: 1;
+        animation: glitch 3s infinite;
+      ">
+        404
+      </div>
+    </div>
+
+    <p style="font-size: var(--text-xl); color: var(--ink-soft); margin-bottom: var(--space-6); max-width: 500px; margin-left: auto; margin-right: auto;">
+      Você vagou por corredores que não existem. O grimório não contém esta entrada.
+      Talvez o mapa esteja rasgado, ou a página foi arrancada por alguma entidade.
+    </p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; margin-bottom: var(--space-8);">
+      <a href="/" class="btn-codex" style="display: inline-flex; gap: var(--space-2);">
+        <i class="fas fa-home"></i> Início do Códice
+      </a>
+      <a href="/#bestiario" class="btn-codex" style="display: inline-flex; gap: var(--space-2);">
+        <i class="fas fa-book"></i> Bestiário
+      </a>
+      <a href="/#correspondencia" class="btn-codex" style="display: inline-flex; gap: var(--space-2);">
+        <i class="fas fa-envelope"></i> Correspondência
+      </a>
+    </div>
+
+    <Marginalia size="sm" style="max-width: 400px; margin: 0 auto;">
+      "Nem todos os que vagueiam estão perdidos. Alguns apenas buscam entradas secretas."
+    </Marginalia>
+  </article>
+
+  <style>
+    @keyframes glitch {
+      0%, 90%, 100% { transform: none; }
+      92% { transform: translate(-2px, 1px); }
+      94% { transform: translate(2px, -1px); }
+      96% { transform: translate(-1px, 2px); }
+      98% { transform: translate(1px, -2px); }
+    }
+  </style>
+</Codex>

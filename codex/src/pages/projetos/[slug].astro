@@ -1,0 +1,231 @@
+---
+// src/pages/projetos/[slug].astro — Página estática por projeto
+import { getCollection, render } from 'astro:content';
+import Codex from '../../components/astro/Codex.astro';
+import ChapterHeading from '../../components/astro/ChapterHeading.astro';
+import Marginalia from '../../components/astro/Marginalia.astro';
+import Seo from '../../components/astro/Seo.astro';
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(project => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+
+const familyLabels: Record<string, string> = {
+  jogos: 'Jogos & Pixel',
+  dados: 'Dados',
+  web: 'Web & Apps',
+  visao: 'Visão',
+};
+
+const statusLabels: Record<string, string> = {
+  enviado: 'Enviado',
+  'em-obras': 'Em Obras',
+  arquivado: 'Arquivado',
+};
+
+const statusColors: Record<string, string> = {
+  enviado: 'var(--p-mint)',
+  'em-obras': 'var(--p-candle)',
+  arquivado: 'var(--ink-soft)',
+};
+---
+
+<Codex
+  title={`${data.title} — Códice`}
+  description={data.tagline}
+  image={data.cover}
+  url={`https://elen.is-a.dev/projetos/${project.id}`}
+  type="article"
+  noIndex={data.status === 'arquivado'}
+>
+  <Seo
+    title={`${data.title} — Códice`}
+    description={data.tagline}
+    image={data.cover}
+    url={`https://elen.is-a.dev/projetos/${project.id}`}
+    type="article"
+    publishedTime={new Date(data.year, 0, 1).toISOString()}
+    tags={data.tech}
+  />
+
+  <article style="max-width: 900px; margin: 0 auto; padding: var(--space-6) var(--space-4);">
+    <!-- Header -->
+    <header style="margin-bottom: var(--space-8); padding-bottom: var(--space-6); border-bottom: 2px solid var(--line);">
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4);">
+        <span style="
+          background: var(--paper);
+          color: var(--accent);
+          padding: var(--space-1) var(--space-3);
+          border: 2px solid var(--line-strong);
+          font-family: var(--font-hud);
+          font-size: var(--text-xs);
+          text-transform: uppercase;
+        ">
+          {familyLabels[data.family] || data.family}
+        </span>
+        <span style="
+          background: var(--paper);
+          color: {statusColors[data.status]};
+          padding: var(--space-1) var(--space-3);
+          border: 2px solid var(--line-strong);
+          font-family: var(--font-hud);
+          font-size: var(--text-xs);
+        ">
+          {statusLabels[data.status] || data.status}
+        </span>
+        <span style="
+          background: var(--paper-2);
+          color: var(--ink-soft);
+          padding: var(--space-1) var(--space-3);
+          border: 1px solid var(--line);
+          font-family: var(--font-hud);
+          font-size: var(--text-xs);
+        ">
+          {data.year}
+        </span>
+      </div>
+
+      <h1 style="
+        font-family: var(--font-display);
+        font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
+        font-weight: 700;
+        color: var(--ink);
+        line-height: 1.2;
+        margin-bottom: var(--space-3);
+      ">
+        {data.title}
+      </h1>
+
+      <p style="font-size: var(--text-lg); color: var(--ink-soft); line-height: 1.6; max-width: 70ch;">
+        {data.tagline}
+      </p>
+    </header>
+
+    <!-- Cover -->
+    {data.cover && (
+      <div style="margin: calc(-1 * var(--space-6)) calc(-1 * var(--space-4)) var(--space-8); position: relative;">
+        <img
+          src={data.cover}
+          alt={data.coverAlt || data.title}
+          style="width: 100%; max-height: 400px; object-fit: cover; border: 2px solid var(--line-strong); box-shadow: var(--shadow-2);"
+        />
+      </div>
+    )}
+
+    <!-- Tech Stack -->
+    <section style="margin-bottom: var(--space-8);">
+      <h2 style="
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        color: var(--ink);
+        margin-bottom: var(--space-3);
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+      ">
+        <i class="fas fa-code" style="color: var(--accent);"></i>
+        Stack Tecnológica
+      </h2>
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+        {data.tech.map(tech => (
+          <span
+            style="
+              background: var(--paper-2);
+              color: var(--ink-soft);
+              padding: var(--space-2) var(--space-3);
+              border: 1px solid var(--line);
+              font-family: var(--font-body);
+              font-size: var(--text-sm);
+              font-weight: 500;
+              transition: all var(--dur-fast) var(--ease);
+            "
+            onmouseover="this.style.background='var(--accent)'; this.style.color='var(--on-accent)'; this.style.borderColor='var(--accent)'"
+            onmouseout="this.style.background='var(--paper-2)'; this.style.color='var(--ink-soft)'; this.style.borderColor='var(--line)'"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section style="margin-bottom: var(--space-8); display: flex; flex-wrap: wrap; gap: var(--space-3);">
+      {data.links.repo && (
+        <a
+          href={data.links.repo}
+          target="_blank"
+          rel="noopener"
+          class="btn-codex"
+          style="display: inline-flex; align-items: center; gap: var(--space-2); text-decoration: none;"
+        >
+          <i class="fab fa-github"></i>
+          <span>Ver Código</span>
+        </a>
+      )}
+      {data.links.demo && (
+        <a
+          href={data.links.demo}
+          target="_blank"
+          rel="noopener"
+          class="btn-codex"
+          style="
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            text-decoration: none;
+            background: var(--accent);
+            color: var(--on-accent);
+            border-color: var(--accent);
+          "
+        >
+          <i class="fas fa-external-link-alt"></i>
+          <span>Demo Online</span>
+        </a>
+      )}
+      <a
+        href="/"
+        class="btn-codex"
+        style="display: inline-flex; align-items: center; gap: var(--space-2); text-decoration: none;"
+      >
+        <i class="fas fa-arrow-left"></i>
+        <span>Voltar ao Bestiário</span>
+      </a>
+    </section>
+
+    <!-- Arcane Note -->
+    {data.arcaneNote && (
+      <Marginalia align="left" style="margin-bottom: var(--space-8); padding: var(--space-4); background: var(--paper-2); border-left-width: 4px;">
+        <strong style="color: var(--accent); display: block; margin-bottom: var(--space-2);">🕯 Nota Arcana</strong>
+        {data.arcaneNote}
+      </Marginalia>
+    )}
+
+    <!-- Content (MDX rendered) -->
+    <div class="prose" style="color: var(--ink); line-height: 1.8;">
+      <Content />
+    </div>
+  </article>
+
+  <script type="module">
+    // Registra visita para trigger de segredo
+    import { useSecrets } from '../../lib/secrets/engine';
+
+    // Pequeno script inline para registrar visita
+    if (typeof window !== 'undefined') {
+      // Aguarda o SecretsProvider hidratar
+      setTimeout(() => {
+        const event = new CustomEvent('codex:visit', { detail: { slug: '{project.slug}' } });
+        window.dispatchEvent(event);
+      }, 100);
+    }
+  </script>
+</Codex>

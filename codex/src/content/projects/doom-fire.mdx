@@ -1,0 +1,33 @@
+---
+title: "Doom Fire"
+tagline: "Estudo do efeito de fogo estilo Doom com paleta de cores e simulação discreta de calor"
+family: visao
+year: 2023
+status: enviado
+tech: ["Python", "Pygame", "NumPy"]
+links:
+  repo: "https://github.com/elen-c-sales/fogo_doom"
+cover: "https://github.com/elen-c-sales/fogo_doom/blob/main/demo.gif?raw=true"
+coverAlt: "Efeito fogo Doom — simulação de calor com vento"
+arcaneNote: "o fogo não queima, revela"
+featured: false
+order: 4
+---
+
+# Doom Fire (Fogo Doom)
+
+Estudo do efeito de fogo estilo Doom usando uma tabela de cores (paleta 256 cores)
+e uma simulação discreta de calor, com dissipação e vento. Implementação fiel ao
+algoritmo original do Doom (1993).
+
+## Detalhes técnicos
+- **Algoritmo:** autômato celular 1D — cada pixel propaga calor para cima
+- **Paleta:** 256 cores (preto → vermelho → amarelo → branco)
+- **Vento:** offset aleatório na propagação horizontal
+- **Performance:** NumPy vectorizado (60 FPS em 800×600)
+
+## Variações implementadas
+- Fogo clássico (vento zero)
+- Fogo com vento lateral
+- Fogo "psicodélico" (paleta HSV rotacionada)
+- Interativo: mouse adiciona fonte de calor

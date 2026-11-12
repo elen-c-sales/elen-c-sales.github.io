@@ -1,0 +1,33 @@
+---
+title: "Inadimplência no Brasil"
+tagline: "Dashboard interativo analisando dados do Banco Central com visualizações dinâmicas"
+family: dados
+year: 2024
+status: enviado
+tech: ["R", "Shiny", "Plotly", "Estatística"]
+links:
+  repo: "https://github.com/elen-c-sales/inadimplencia-shiny-dashboard"
+cover: "https://github.com/elen-c-sales/inadimplencia-shiny-dashboard/blob/main/captura_tela.png?raw=true"
+coverAlt: "Dashboard Shiny — séries temporais de inadimplência"
+arcaneNote: "números contam histórias que o olho nu não vê"
+featured: true
+order: 3
+---
+
+# Inadimplência no Brasil
+
+Dashboard interativo analisando dados do Banco Central do Brasil com visualizações
+dinâmicas e séries temporais. Permite explorar a evolução da inadimplência por
+modalidade de crédito, região e período.
+
+## Detalhes técnicos
+- **Framework:** R Shiny + bslib (Bootstrap 5)
+- **Visualização:** Plotly (interativo) + ggplot2 (estático)
+- **Dados:** API SGS/BCB (Sistema Gerenciador de Séries Temporais)
+- **Deploy:** shinyapps.io
+
+## Features
+- Filtros dinâmicos por ano, modalidade, segmento
+- Séries temporais com zoom/pan
+- Decomposição sazonal (STL)
+- Exportação de dados filtrados (CSV)

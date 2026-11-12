@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /arcanum
+
+Sitemap: https://elen.is-a.dev/sitemap-index.xml

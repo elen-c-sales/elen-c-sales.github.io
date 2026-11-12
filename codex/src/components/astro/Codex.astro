@@ -1,0 +1,63 @@
+---
+// src/components/astro/Codex.astro — Layout principal
+import BaseHead from './BaseHead.astro';
+import '../../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  url?: string;
+  type?: 'website' | 'article';
+  noIndex?: boolean;
+}
+
+const { title, description, image, url, type, noIndex } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="candle">
+  <BaseHead
+    title={title}
+    description={description}
+    image={image}
+    url={url}
+    type={type}
+    noIndex={noIndex}
+  />
+  <body>
+    <a href="#main" class="skip-link">Pular para conteúdo principal</a>
+
+    <!-- SecretsEngine ilha (HUD + Terminal + Toasts) -->
+    <div id="secrets-engine" style="display: contents;"></div>
+
+    <main id="main" style="padding-top: 72px;"> <!-- offset para HUD fixo -->
+      <slot />
+    </main>
+
+    <footer style="border-top: 2px solid var(--line); padding: var(--space-6) var(--space-4); margin-top: var(--space-8);">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); font-size: var(--text-sm); color: var(--ink-soft);">
+        <p>© 2025 Elen Camila Sales Silva — Desenvolvido com <i class="fas fa-heart" style="color: var(--accent);"></i> e Dados.</p>
+        <div style="display: flex; gap: var(--space-4);">
+          <a href="https://github.com/elen-c-sales" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/elen-camila-sales/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:e.camila.sales@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Hydrate SecretsEngine -->
+    <script type="module">
+      import { SecretsEngine } from '../components/react/SecretsEngine';
+      import { hydrate } from 'react-dom/client';
+
+      const root = hydrate(document.getElementById('secrets-engine'));
+    </script>
+  </body>
+</html>
