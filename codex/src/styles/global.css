@@ -835,3 +835,7 @@ html {
 
 .shelf-name { font-family: var(--font-hud); font-size: var(--text-xs); line-height: 1.2; text-align: center; min-height: 2.4em; display: flex; align-items: center; justify-content: center; }
 
+
+.prologo-grid { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-8); align-items: start; }
+@media (max-width: 768px) { .prologo-grid { grid-template-columns: 1fr; gap: var(--space-6); } }
+
