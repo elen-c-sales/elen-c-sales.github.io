@@ -1,5 +1,63 @@
-/* src/styles/global.css — reset + base + utilitários globais */
 @import './themes.css';
+
+@keyframes codeghost-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.codeghost {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: var(--z-toast);
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  image-rendering: pixelated;
+  animation: codeghost-float 2.4s ease-in-out infinite;
+}
+
+.codeghost img {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+  filter: drop-shadow(2px 2px 0 rgba(23,18,31,0.35));
+}
+
+.codeghost:active {
+  transform: scale(0.9);
+}
+
+.codeghost-bubble {
+  position: fixed;
+  right: var(--space-4);
+  bottom: calc(var(--space-4) + 56px);
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--outline);
+  box-shadow: var(--shadow-1);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-hud);
+  font-size: var(--text-xs);
+  max-width: 200px;
+  z-index: var(--z-toast);
+  display: none;
+}
+
+.codeghost-bubble.is-visible {
+  display: block;
+}
+
+/* ElenPixel — fonte pixel custom (base Press Start 2P) */
+@font-face {
+  font-family: 'ElenPixel';
+  src: url('/fonts/ElenPixel.woff2') format('woff2'),
+       url('/fonts/ElenPixel.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Reset moderno */
 *, *::before, *::after {
@@ -516,7 +574,7 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 18%;
+  height: var(--fill, 18%);
   background: var(--flavour, var(--accent));
   transition: height 360ms steps(6, end);
   z-index: -1;
@@ -583,6 +641,10 @@ a.btn-codex:active {
 
 /* Shelf tile specific (knowsoda-style shelf) */
 .shelf-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
   text-decoration: none;
   color: var(--ink);
 }
@@ -619,7 +681,7 @@ a.btn-codex:active {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 18%;
+  height: var(--fill, 18%);
   background: var(--flavour, var(--accent));
   transition: height 360ms steps(6, end);
   z-index: -1;
@@ -763,3 +825,13 @@ html {
   background: var(--accent);
   color: var(--on-accent);
 }
+/* Shelf layout (knowsoda-style) */
+.shelf-row { display: grid; grid-template-columns: 150px 1fr; gap: var(--space-4); align-items: start; }
+.shelf-label { padding-top: var(--space-1); font-family: var(--font-hud); font-size: var(--text-sm); letter-spacing: 0.06em; text-transform: uppercase; }
+.shelf-label span { color: var(--ink-soft); border-bottom: 3px solid var(--flavour, var(--accent)); padding-bottom: 2px; }
+.shelf-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: var(--space-3); }
+@media (max-width: 640px) { .shelf-row { grid-template-columns: 1fr; } }
+
+
+.shelf-name { font-family: var(--font-hud); font-size: var(--text-xs); line-height: 1.2; text-align: center; min-height: 2.4em; display: flex; align-items: center; justify-content: center; }
+

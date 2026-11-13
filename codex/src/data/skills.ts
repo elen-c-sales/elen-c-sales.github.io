@@ -48,6 +48,7 @@ export const skills: Skill[] = [
   { name: 'Docker', category: 'ferramentas-devops', proficiency: 3, icon: 'fab fa-docker', description: 'Containers, multi-stage builds, compose, deploy' },
   { name: 'Linux / Bash', category: 'ferramentas-devops', proficiency: 3, icon: 'fab fa-linux', description: 'Terminal, scripts, permissões, systemd, SSH' },
   { name: 'VS Code / Neovim', category: 'ferramentas-devops', proficiency: 4, icon: 'fas fa-code', description: 'Extensões, debugging, snippets, LSP, keymaps' },
+  { name: 'Vite / Tooling', category: 'ferramentas-devops', proficiency: 4, icon: 'fas fa-bolt', description: 'Build, dev server, bundling, plugins, otimização de assets' },
 ];
 
 export const skillCategories: { key: SkillCategory; label: string; icon: string }[] = [

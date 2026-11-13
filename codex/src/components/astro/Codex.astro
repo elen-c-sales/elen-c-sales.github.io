@@ -52,12 +52,34 @@ const { title, description, image, url, type, noIndex } = Astro.props;
       </div>
     </footer>
 
+    <!-- CodeGhost mascot -->
+    <button id="codeghost" class="codeghost" type="button" aria-label="CodeGhost mascote" title="CodeGhost">
+      <img src="/mascots/codeghost.png" alt="CodeGhost" width="48" height="48" />
+    </button>
+    <div id="codeghost-bubble" class="codeghost-bubble" role="status" aria-live="polite"></div>
+
     <!-- Hydrate SecretsEngine -->
     <script type="module">
       import { SecretsEngine } from '../components/react/SecretsEngine';
       import { hydrate } from 'react-dom/client';
 
       const root = hydrate(document.getElementById('secrets-engine'));
+    </script>
+
+    <script is:inline>
+      (function () {
+        var ghost = document.getElementById('codeghost');
+        var bubble = document.getElementById('codeghost-bubble');
+        var messages = ['Boo! CodeGhost aqui.', 'Compilando segredos...', 'Pixel por pixel.', '↑↑↓↓←→←→BA'];
+        var timer = null;
+        if (!ghost || !bubble) return;
+        ghost.addEventListener('click', function () {
+          bubble.textContent = messages[Math.floor(Math.random() * messages.length)];
+          bubble.classList.add('is-visible');
+          if (timer) clearTimeout(timer);
+          timer = setTimeout(function () { bubble.classList.remove('is-visible'); }, 2400);
+        });
+      })();
     </script>
   </body>
 </html>

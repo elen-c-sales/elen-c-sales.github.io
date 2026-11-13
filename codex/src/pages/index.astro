@@ -19,6 +19,14 @@ const allProjects = projects
   .sort((a, b) => a.data.order - b.data.order || b.data.year - a.data.year);
 
 const featuredSkills = getFeaturedSkills(8);
+
+const flavourByCategory = {
+  linguagens: '#7DB8EE',
+  'dados-ml': '#6FD08C',
+  'web-fullstack': '#F2A65A',
+  'gamedev-graficos': '#F27AA6',
+  'ferramentas-devops': '#F2CF56',
+};
 ---
 
 <Codex
@@ -93,15 +101,15 @@ const featuredSkills = getFeaturedSkills(8);
 
           <!-- Stats HUD -->
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); text-align: center;">
-            <div style="padding: var(--space-3); background: var(--paper-2); border: 2px solid var(--line);">
+            <div class="offset-border" style="padding: var(--space-3); background: var(--paper-2); border: 2px solid var(--line);">
               <div style="font-family: var(--font-hud); font-size: var(--text-2xl); color: var(--accent);">17</div>
               <div style="font-family: var(--font-body); font-size: var(--text-xs); color: var(--ink-soft);">Projetos</div>
             </div>
-            <div style="padding: var(--space-3); background: var(--paper-2); border: 2px solid var(--line);">
+            <div class="offset-border" style="padding: var(--space-3); background: var(--paper-2); border: 2px solid var(--line);">
               <div style="font-family: var(--font-hud); font-size: var(--text-2xl); color: var(--accent);">9</div>
               <div style="font-family: var(--font-body); font-size: var(--text-xs); color: var(--ink-soft);">Tecnologias</div>
             </div>
-            <div style="padding: var(--space-3); background: var(--paper-2); border: 2px solid var(--line);">
+            <div class="offset-border" style="padding: var(--space-3); background: var(--paper-2); border: 2px solid var(--line);">
               <div style="font-family: var(--font-hud); font-size: var(--text-2xl); color: var(--accent);">3+</div>
               <div style="font-family: var(--font-body); font-size: var(--text-xs); color: var(--ink-soft);">Anos Exp.</div>
             </div>
@@ -165,70 +173,21 @@ const featuredSkills = getFeaturedSkills(8);
     <div class="container">
       <ChapterHeading number="02" title="Grimório" subtitle="Feitiços dominados pela guardiã" icon="fas fa-magic" />
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-5);">
+      <div style="display: flex; flex-direction: column; gap: var(--space-5);">
         {skillCategories.map(category => {
           const categorySkills = skills.filter(s => s.category === category.key);
+          const flavour = flavourByCategory[category.key] || 'var(--accent)';
           return (
-            <div class="codex-card" style="height: 100%;">
-              <h3 style="
-                font-family: var(--font-display);
-                font-size: var(--text-xl);
-                color: var(--ink);
-                margin-bottom: var(--space-4);
-                display: flex;
-                align-items: center;
-                gap: var(--space-2);
-                padding-bottom: var(--space-3);
-                border-bottom: 2px solid var(--line);
-              ">
-                <i class={category.icon} style="color: var(--accent);"></i>
-                {category.label}
-              </h3>
-              <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <div class="shelf-row" style={"--flavour: " + flavour}>
+              <p class="shelf-label"><span>{category.label}</span></p>
+              <div class="shelf-tiles">
                 {categorySkills.map(skill => (
-                  <div
-                    style="
-                      display: flex;
-                      align-items: center;
-                      gap: var(--space-3);
-                      padding: var(--space-2);
-                      background: var(--paper-2);
-                      border: 1px solid var(--line);
-                      transition: all var(--dur-fast) var(--ease);
-                    "
-                    onmouseover="this.style.borderColor='var(--accent)'; this.style.background='var(--paper)'"
-                    onmouseout="this.style.borderColor='var(--line)'; this.style.background='var(--paper-2)'"
-                  >
-                    <i class={skill.icon} style="font-size: var(--text-lg); color: var(--accent); width: 28px; text-align: center;"></i>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        {skill.name}
-                      </div>
-                      <div style="
-                        height: 6px;
-                        background: var(--line);
-                        border-radius: 3px;
-                        overflow: hidden;
-                        margin-top: var(--space-1);
-                      ">
-                        <div
-                          style="
-                            height: 100%;
-                            width: {skill.proficiency * 20}%;
-                            background: var(--accent);
-                            transition: width var(--dur-med) var(--ease);
-                          "
-                        ></div>
-                      </div>
-                    </div>
-                    <span style="
-                      font-family: var(--font-hud);
-                      font-size: var(--text-xs);
-                      color: var(--accent);
-                      min-width: 24px;
-                    ">
-                      {skill.proficiency}/5
+                  <div class="shelf-tile">
+                    <span class="shelf-square" style={"--fill: " + (skill.proficiency * 20) + "%"}>
+                      <span class="shelf-fill"></span>
+                      <i class={skill.icon || 'fas fa-code'} style="position: relative; font-size: var(--text-lg); color: var(--ink);"></i>
                     </span>
+                    <span class="shelf-name">{skill.name}</span>
                   </div>
                 ))}
               </div>

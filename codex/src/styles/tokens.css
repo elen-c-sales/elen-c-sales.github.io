@@ -20,6 +20,7 @@
   --on-accent: #fff;
   --line: #d8cfe8;
   --line-strong: var(--p-arcane);
+  --outline: var(--line-strong);
 
   /* Grid & espaço (múltiplos de 4px) */
   --grid: 4px;
@@ -35,7 +36,7 @@
   /* Tipografia */
   --font-display: 'Cinzel', serif;
   --font-body: 'Quicksand', sans-serif;
-  --font-hud: 'Press Start 2P', cursive;
+  --font-hud: 'ElenPixel', monospace;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
