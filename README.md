@@ -11,9 +11,9 @@ Acesse o portfólio interativo: [https://elen.is-a.dev/](https://elen.is-a.dev/)
 ## Conceito & Identidade
 O design segue a estética de **Grimório / Códice de Engenharia** — capítulos, bestiário, grimório, correspondência — com tom *dark fantasy / arcano* (referências: *Tunic*, *Inscryption*, *Loop Hero*).
 
-- **Mascote**: Diabrete do Pomodoro (pixel art) = familiar do códice
+- **Mascote**: Diabrete do Pomodoro (pixel art) = familiar do códice; CodeGhost (mascote flutuante)
 - **Temas**: `manuscript` (claro), `candle` (escuro, default), `void` (secreto, desbloqueável via Konami)
-- **Tipografia**: `Cinzel` (títulos) · `Quicksand` (corpo) · `Press Start 2P` (HUD/terminal)
+- **Tipografia**: `Cinzel` (títulos) · `Quicksand` (corpo) · `ElenPixel` (HUD/terminal)
 - **Regra de ouro**: Ovo de páscoa = recompensa, nunca portão. Conteúdo 100% acessível sem JS.
 
 ---
