@@ -10,9 +10,11 @@ interface Props {
   url?: string;
   type?: 'website' | 'article';
   noIndex?: boolean;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
-const { title, description, image, url, type, noIndex } = Astro.props;
+const { title, description, image, url, type, noIndex, imageWidth, imageHeight } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -24,6 +26,8 @@ const { title, description, image, url, type, noIndex } = Astro.props;
     url={url}
     type={type}
     noIndex={noIndex}
+    imageWidth={imageWidth}
+    imageHeight={imageHeight}
   />
   <body>
     <a href="#main" class="skip-link">Pular para conteúdo principal</a>

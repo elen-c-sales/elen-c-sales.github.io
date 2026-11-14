@@ -7,49 +7,52 @@ interface Props {
   url?: string;
   type?: 'website' | 'article';
   noIndex?: boolean;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
 const {
   title,
   description,
-  image = '/og-default.png',
+  image = '/og-default.jpg',
   url = 'https://elen.is-a.dev',
   type = 'website',
   noIndex = false,
+  imageWidth,
+  imageHeight,
 } = Astro.props;
 
 const canonicalURL = new URL(url, Astro.site);
 const imageURL = new URL(image, Astro.site);
+
+const ext = (image.split('?')[0].split('.').pop() || '').toLowerCase();
+const mimeType =
+  ext === 'png' ? 'image/png' :
+  ext === 'jpg' || ext === 'jpeg' ? 'image/jpeg' :
+  ext === 'webp' ? 'image/webp' :
+  ext === 'gif' ? 'image/gif' :
+  undefined;
 ---
 
-<!-- Theme init script (executa antes do paint para evitar flash) -->
-<script is:inline>
-  (function() {
-    try {
-      const saved = localStorage.getItem('codex.theme');
-      if (saved) {
-        document.documentElement.dataset.theme = saved;
-      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.dataset.theme = 'candle';
-      } else {
-        document.documentElement.dataset.theme = 'manuscript';
-      }
-    } catch (e) {
-      document.documentElement.dataset.theme = 'candle';
-    }
-  })();
-</script>
-
-<!-- Preload fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
-
-<!-- FontAwesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 <head>
+  <!-- Theme init script (executa antes do paint para evitar flash) -->
+  <script is:inline>
+    (function() {
+      try {
+        const saved = localStorage.getItem('codex.theme');
+        if (saved) {
+          document.documentElement.dataset.theme = saved;
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.dataset.theme = 'candle';
+        } else {
+          document.documentElement.dataset.theme = 'manuscript';
+        }
+      } catch (e) {
+        document.documentElement.dataset.theme = 'candle';
+      }
+    })();
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="generator" content={Astro.generator} />
@@ -61,15 +64,28 @@ const imageURL = new URL(image, Astro.site);
 
   <link rel="canonical" href={canonicalURL} />
 
+  <!-- Preload fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- Open Graph -->
   <meta property="og:type" content={type} />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={imageURL} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image:secure_url" content={imageURL} />
+  {mimeType && <meta property="og:image:type" content={mimeType} />}
+  {imageWidth && <meta property="og:image:width" content={String(imageWidth)} />}
+  {imageHeight && <meta property="og:image:height" content={String(imageHeight)} />}
+  <meta property="og:image:alt" content={title} />
   <meta property="og:site_name" content="Elen Camila — Códice" />
+  <meta property="og:locale" content="pt_BR" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -77,6 +93,7 @@ const imageURL = new URL(image, Astro.site);
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={imageURL} />
+  {mimeType && <meta name="twitter:image:type" content={mimeType} />}
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

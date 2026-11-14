@@ -19,6 +19,18 @@ const { project } = Astro.props;
 const { data } = project;
 const { Content } = await render(project);
 
+// Detecta tipo de cover
+const isVideoCover = (url: string) => /\.(mp4|webm|mov|ogg)(\?|$)/i.test(url);
+const isGifCover = (url: string) => /\.gif(\?|$)/i.test(url);
+
+// Imagem estática para OG/WhatsApp (nunca vídeo/gif animado)
+let ogImage = data.cover || '/og-default.jpg';
+if (data.cover && isVideoCover(data.cover)) {
+  ogImage = data.cover.replace(/\.(mp4|webm|mov|ogg)(\?|$)/i, '.png');
+} else if (data.cover && isGifCover(data.cover)) {
+  ogImage = data.cover.replace(/\.gif(\?|$)/i, '.png');
+}
+
 const familyLabels: Record<string, string> = {
   jogos: 'Jogos & Pixel',
   dados: 'Dados',
@@ -42,7 +54,7 @@ const statusColors: Record<string, string> = {
 <Codex
   title={`${data.title} — Códice`}
   description={data.tagline}
-  image={data.cover}
+  image={ogImage}
   url={`https://elen.is-a.dev/projetos/${project.id}`}
   type="article"
   noIndex={data.status === 'arquivado'}
@@ -50,7 +62,7 @@ const statusColors: Record<string, string> = {
   <Seo
     title={`${data.title} — Códice`}
     description={data.tagline}
-    image={data.cover}
+    image={ogImage}
     url={`https://elen.is-a.dev/projetos/${project.id}`}
     type="article"
     publishedTime={new Date(data.year, 0, 1).toISOString()}
@@ -113,11 +125,25 @@ const statusColors: Record<string, string> = {
     <!-- Cover -->
     {data.cover && (
       <div style="margin: calc(-1 * var(--space-6)) calc(-1 * var(--space-4)) var(--space-8); position: relative;">
-        <img
-          src={data.cover}
-          alt={data.coverAlt || data.title}
-          style="width: 100%; max-height: 400px; object-fit: cover; border: 2px solid var(--line-strong); box-shadow: var(--shadow-2);"
-        />
+        {isVideoCover(data.cover) ? (
+          <video
+            src={data.cover}
+            poster={ogImage}
+            title={data.coverAlt || data.title}
+            style="width: 100%; max-height: 400px; object-fit: cover; border: 2px solid var(--line-strong); box-shadow: var(--shadow-2);"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata"
+          />
+        ) : (
+          <img
+            src={data.cover}
+            alt={data.coverAlt || data.title}
+            style="width: 100%; max-height: 400px; object-fit: cover; border: 2px solid var(--line-strong); box-shadow: var(--shadow-2);"
+          />
+        )}
       </div>
     )}
 
