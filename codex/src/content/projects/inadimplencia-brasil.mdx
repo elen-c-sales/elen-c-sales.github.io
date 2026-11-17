@@ -1,12 +1,13 @@
 ---
 title: "Inadimplência no Brasil"
-tagline: "Dashboard interativo analisando dados do Banco Central com visualizações dinâmicas"
+tagline: "Dashboard interativo em R/Shiny para analisar a inadimplência das pessoas físicas (BCB)"
 family: dados
-year: 2024
+year: 2025
 status: enviado
-tech: ["R", "Shiny", "Plotly", "Estatística"]
+tech: ["R", "Shiny", "Shinydashboard", "Plotly", "DT", "rbcb"]
 links:
   repo: "https://github.com/elen-c-sales/inadimplencia-shiny-dashboard"
+  demo: "https://elen-c-sales.shinyapps.io/inadimplencia_shiny/"
 cover: "/media/inadimplencia-brasil.png"
 coverAlt: "Dashboard Shiny — séries temporais de inadimplência"
 arcaneNote: "números contam histórias que o olho nu não vê"
@@ -16,18 +17,48 @@ order: 3
 
 # Inadimplência no Brasil
 
-Dashboard interativo analisando dados do Banco Central do Brasil com visualizações
-dinâmicas e séries temporais. Permite explorar a evolução da inadimplência por
-modalidade de crédito, região e período.
+Dashboard interativo desenvolvido em **R + Shiny** para analisar a evolução da
+**inadimplência das pessoas físicas no Brasil** ao longo do tempo, com dados
+oficiais do **Banco Central do Brasil** coletados automaticamente via API.
 
-## Detalhes técnicos
-- **Framework:** R Shiny + bslib (Bootstrap 5)
-- **Visualização:** Plotly (interativo) + ggplot2 (estático)
-- **Dados:** API SGS/BCB (Sistema Gerenciador de Séries Temporais)
-- **Deploy:** shinyapps.io
+## Funcionalidades
 
-## Features
-- Filtros dinâmicos por ano, modalidade, segmento
-- Séries temporais com zoom/pan
-- Decomposição sazonal (STL)
-- Exportação de dados filtrados (CSV)
+- Série temporal interativa da inadimplência.
+- Filtros de período dinâmicos.
+- Análise de variações mensais em valores absolutos e percentuais.
+- Estatísticas descritivas: mínimo, máximo, média, mediana e desvio padrão.
+- Cards de resumo com os principais indicadores do período selecionado.
+- Tabela dinâmica com os dados filtrados.
+
+## Stack
+
+- **R + Shiny** — aplicação reativa.
+- **Shinydashboard** — layout e interface.
+- **Plotly** — gráficos interativos.
+- **DT** — tabelas dinâmicas.
+- **tidyverse** — manipulação e transformação dos dados.
+- **rbcb** — coleta dos dados via API do Banco Central.
+
+## Dados
+
+- **Inadimplência das Pessoas Físicas no Brasil**
+- Fonte: Banco Central do Brasil
+- Consulta automática via API com o pacote `rbcb`
+
+## Como rodar localmente
+
+```r
+install.packages(c("shiny", "shinydashboard", "tidyverse", "plotly", "DT", "rbcb"))
+shiny::runApp("Caminho/para/a/pasta/inadimplencia-shiny-dashboard")
+```
+
+## Estrutura
+
+- `app.R` — arquivo principal do dashboard.
+- `captura_tela.png` — imagem ilustrativa.
+- `README.md` — documentação.
+
+## Deploy
+
+Publicado no **shinyapps.io**. O link da demo está disponível no topo desta
+página e no README do repositório.

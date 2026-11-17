@@ -1,10 +1,10 @@
 ---
 title: "Inadimplência vs. Consumo"
-tagline: "Análise exploratória: correlação inadimplência vs consumo famílias (BCB/IBGE)."
+tagline: "Análise exploratória: correlação entre inadimplência e consumo das famílias (BCB/IBGE)"
 family: dados
-year: 2024
+year: 2025
 status: enviado
-tech: ["Python Pandas", "Stats", "Matplotlib"]
+tech: ["R", "tidyverse", "rbcb", "sidrar", "ggplot2"]
 links:
   repo: "https://github.com/elen-c-sales/inadimplencia-vs-consumo-brasil"
 cover: "/media/inadimplencia-vs-consumo.png"
@@ -16,5 +16,78 @@ order: 5
 
 # Inadimplência vs. Consumo
 
-Análise exploratória investigando a correlação entre o aumento da
-inadimplência e o consumo das famílias brasileiras (Dados BCB/IBGE).
+Análise exploratória da relação entre a **inadimplência das pessoas físicas** e
+o **consumo das famílias** no Brasil, usando dados públicos do Banco Central
+(BCB) e do IBGE.
+
+## Objetivo
+
+Investigar se existe relação entre a taxa de inadimplência e o consumo das
+famílias. A hipótese inicial era que, quando a inadimplência aumenta, o consumo
+tende a diminuir — a análise foi feita para validar ou refutar essa ideia a
+partir dos dados.
+
+## Dados
+
+Mais de uma década de informações integrando:
+
+- **Taxa de inadimplência das pessoas físicas** — Banco Central do Brasil.
+- **Consumo das famílias** — volume de vendas do comércio, IBGE (Pesquisa
+  Mensal do Comércio, varejo ampliado).
+
+## Resultados
+
+Os dados revelaram uma **correlação moderada e positiva** entre inadimplência e
+consumo:
+
+- **Correlação simples:** aproximadamente **0,42**.
+- **Correlação defasada (3 meses):** aproximadamente **0,38**.
+
+Ou seja: mesmo com o aumento da inadimplência, o consumo não apenas não
+diminuiu como pode até crescer em determinados períodos.
+
+## Interpretação
+
+O resultado, aparentemente contraditório, reflete a dinâmica econômica
+brasileira, em que o consumo é sustentado por:
+
+- Crédito rotativo (cartões, consignados, cheque especial).
+- Renegociações e reparcelamentos de dívidas.
+- Programas de transferência de renda.
+- Inflação, juros e mercado de trabalho.
+
+Na prática, muitas famílias seguem consumindo mesmo inadimplentes, recorrendo a
+diferentes estratégias para manter o padrão de consumo.
+
+## Tendência
+
+- **Inadimplência:** queda significativa entre 2016 e 2019, seguida de alta a
+  partir de 2022.
+- **Consumo:** estagnação ou leve queda, com picos sazonais, impactado por
+  inflação, juros elevados e perda de poder de compra.
+
+## Conclusão
+
+Dados não falam sozinhos. A análise precisa considerar contexto, interpretação
+econômica e múltiplos fatores. A inadimplência é um indicador relevante do
+estresse econômico das famílias, mas não explica isoladamente o comportamento
+do consumo — inflação, juros, acesso ao crédito e políticas públicas também
+pesam.
+
+## Visualizações
+
+- Inadimplência das pessoas físicas no Brasil.
+- Consumo das famílias (PMC — varejo ampliado).
+- Séries temporais comparadas.
+- Correlação entre as séries.
+- Estatísticas descritivas (também em tabela HTML interativa).
+
+## Tecnologias
+
+R, tidyverse, rbcb, sidrar, ggplot2, gridExtra, gt e DT.
+
+## Como reproduzir
+
+```bash
+git clone https://github.com/elen-c-sales/inadimplencia-vs-consumo-brasil.git
+```

@@ -1,10 +1,10 @@
 ---
 title: "GUNSHIP CQB"
-tagline: "Simulador tático de combate espacial 3D em primeira pessoa"
+tagline: "Simulador tático de combate espacial 3D em primeira pessoa, inspirado em The Expanse"
 family: jogos
-year: 2024
+year: 2026
 status: enviado
-tech: ["Python", "Pygame", "OpenGL"]
+tech: ["Python", "Pygame", "Game Design"]
 links:
   repo: "https://github.com/elen-c-sales/gunship-cqb"
 cover: "/media/gunship-cqb.mp4"
@@ -16,14 +16,63 @@ order: 2
 
 # GUNSHIP CQB
 
-Simulador tático de combate espacial 3D em primeira pessoa. Pilote uma corveta,
-gerencie sistemas PDC automáticos e intercepte ameaças em combates de alta
-letalidade.
+Simulador tático de combate em primeira pessoa inspirado em *The Expanse*.
+Você pilota uma **canhoneira de classe corveta**, gerencia os sistemas de
+defesa PDC e enfrenta combates espaciais de alta letalidade.
 
-## Detalhes técnicos
-- **Render:** Pygame + OpenGL (pygame.gfxdraw + glDrawArrays)
-- **Combate:** sistemas de armas baseados em prioridade de ameaça
-- **HUD:** radar, gestão de energia, status de escudos/mísseis
-- **Arquitetura:** ECS simples (entidade-componente-sistema) customizada
+## Armamentos
+
+- **CANNON** — arma principal de curta/média distância. Dispara rajadas de 10
+  projéteis com detecção de colisão por **volume varrido** (*swept volume*),
+  garantindo precisão em altas velocidades.
+- **TORPEDO** — míssil teleguiado que exige **lock-on**. As naves inimigas têm
+  lógica de evasão, com 10% de chance de escapar ao detectar um míssil.
+
+## Defesa de ponto (PDC)
+
+O sistema **PDC** (Point Defense Cannon) é automatizado e focado em interceptar
+torpedos:
+
+- Ao pressionar **ENTER**, busca e dispara contra ameaças próximas por 2
+  segundos.
+- Quando o HUD indica trava em um torpedo inimigo, **ENTER** executa um disparo
+  de precisão direto no alvo.
+
+## Dano e colisão
+
+- Torpedos inimigos causam **80 de dano**; a nave do jogador tem **100 de
+  integridade** total.
+- O raio de colisão é **adaptativo**: se ajusta conforme a proximidade do alvo
+  para evitar falhas de registro em combate próximo.
+
+## Controles
+
+| Tecla | Função |
+| --- | --- |
+| Setas / WASD | Controle de direção (pitch/yaw) |
+| ESPAÇO | Disparo da arma selecionada |
+| TAB | Alternar entre CANNON e TORPEDO |
+| ENTER | Ativar defesa automática PDC / disparo em lock |
+| R | Reiniciar a simulação após destruição |
+| ESC | Sair |
+
+## Como rodar
+
+Requisitos: Python 3.10+ e Pygame 2.6.1+.
+
+```bash
+pip install pygame
+python main.py
+```
+
+## Contribuição
+
+O projeto está aberto a colaborações, especialmente em:
+
+- Otimização da engine de partículas.
+- Novos comportamentos de IA para as naves inimigas.
+- Melhoria dos assets de cockpit e sprites.
+
+Faça um fork e envie um pull request descrevendo as mudanças. Licença MIT.
 
 > **Segredo:** visite esta página no terminal com `open gunship-cqb`.

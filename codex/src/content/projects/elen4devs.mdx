@@ -1,33 +1,103 @@
 ---
-title: "Elen4Devs — Utils Suite"
-tagline: "Suíte web responsiva com calculadoras e ferramentas para devs. Foco em A11y e performance."
+title: "Elen4Devs — Suíte de Ferramentas Dev"
+tagline: "Suíte de 15 ferramentas dev — texto, matemática, datas e utilitários 100% no navegador."
 family: web
-year: 2024
+year: 2025
 status: enviado
-tech: ["JavaScript", "A11y", "CSS3"]
+tech: ["Astro 6", "React 18", "TypeScript", "Vitest", "GitHub Actions"]
 links:
   repo: "https://github.com/elen-c-sales/elen4devs"
-  demo: "https://elen-c-sales.github.io/elen4devs/"
+  demo: "https://elen.is-a.dev/elen4devs/"
 cover: "/media/elen4devs.png"
-coverAlt: "Elen4Devs — calculadoras e ferramentas para devs"
+coverAlt: "Elen4Devs — hub de ferramentas com temas claro e escuro"
 arcaneNote: "ferramenta boa não atrapalha"
 featured: true
 order: 10
 ---
 
-# Elen4Devs — Utils Suite
+# Elen4Devs — Suíte de Ferramentas Dev
 
-Suíte web responsiva com calculadoras e ferramentas para devs. Foco total em
-acessibilidade (ARIA) e performance.
+Aplicação web estática com **15 ferramentas** para o dia a dia de quem
+desenvolve: manipulação de texto, calculadoras matemáticas, cálculos de datas e
+utilitários de validação. Todo o processamento acontece no navegador — nenhum
+dado sai da máquina do usuário e não existe backend.
+
+O projeto foi reescrito do zero em **Astro 6 + React 18 + TypeScript**, com
+catálogo central de rotas, busca por command palette e testes automatizados.
 
 ## Ferramentas incluídas
-- **Conversores:** base64, URL encoding, JSON formatter, color picker
-- **Calculadoras:** regex tester, timestamp converter, hash generator
-- **Utilitários:** lorem ipsum, UUID generator, JWT decoder
 
-## Detalhes técnicos
-- **Vanilla JS** (ES modules, sem dependências)
-- **Acessibilidade:** ARIA labels, focus management, keyboard navigation, screen reader tested
-- **CSS:** Custom properties, container queries, prefers-reduced-motion
-- **Performance:** < 10KB gzipped, zero layout shift
-- **Deploy:** GitHub Pages
+### Texto & Strings (7)
+- **Remover linhas duplicadas** — mantém a primeira ocorrência, com opção de
+  diferenciar ou ignorar maiúsculas e minúsculas.
+- **Ordenar linhas** — alfabética crescente (A-Z) e decrescente (Z-A), com
+  suporte a acentuação em português.
+- **Localizar & substituir** — substituição em massa com Expressões Regulares
+  e modo case-insensitive.
+- **Prefixo & sufixo por linha** — insere caracteres no início e no fim de cada
+  linha, com opção para ignorar linhas vazias.
+- **Conversor de caixa** — MAIÚSCULAS, minúsculas, Title Case, camelCase,
+  snake_case e kebab-case.
+- **Inverter texto** — inverte caracteres e também de cabeça para baixo em
+  Unicode.
+- **Suíte completa** — contador de caracteres, palavras, linhas e tempo
+  estimado de leitura.
+
+### Matemática (3)
+- **Porcentagem** — 6 modos de cálculo em tempo real, exibindo a fórmula usada.
+- **Áreas geométricas** — círculo, quadrado, retângulo, triângulo, losango,
+  trapézio e elipse, com diagrama SVG dinâmico e seleção de unidade.
+- **Regra de 3** — proporções diretas e inversamente proporcionais.
+
+### Datas (1)
+- **Datas & dias úteis** — diferença entre datas (dias corridos, úteis e
+  semanas) e soma/subtração de dias com opção de contar apenas dias úteis.
+
+### Dev Tools (4)
+- **CPF e CNPJ** — geradores e validadores por módulo 11, com ou sem pontuação.
+- **Cartão de crédito (Luhn)** — geração de números para testes (Visa,
+  Mastercard, Elo e Amex) e validação com detecção de bandeira.
+- **JSON** — formatador e minificador.
+- **UUID v4 e Base64** — geração de UUIDs em lote e codificação/decodificação
+  Base64 em UTF-8.
+
+## Experiência de uso e acessibilidade
+
+- **Command Palette** (`Ctrl+K` / `Cmd+K`) para pular direto para qualquer
+  ferramenta.
+- **Filtro no hub inicial** por categoria e busca textual.
+- **Favoritas e usadas recentemente** salvas em `localStorage`.
+- **Links compartilháveis** — os cálculos podem ser reproduzidos via
+  parâmetros na URL.
+- **Tema claro e escuro** persistido localmente.
+- Execução **100% client-side**, sem envio de dados.
+
+## Stack e arquitetura
+
+- **Astro 6** — páginas estáticas por rota, ilhas React para interatividade.
+- **React 18 + TypeScript** — componentes das ferramentas e command palette.
+- **Catálogo central** em `src/data/tools.ts` — rotas, palavras-chave e FAQs.
+- **Lógica pura** em `src/lib/` — módulos de math, dates, dev e text testáveis
+  sem interface.
+- **Vitest** — testes unitários da lógica.
+- **GitHub Actions** — `check`, `test`, `build` e deploy do `dist/` no GitHub
+  Pages.
+
+## Desenvolvimento local
+
+Requisitos: Node.js 22 ou superior.
+
+```bash
+npm install
+npm test
+npm run check
+npm run dev      # http://localhost:4321
+npm run build    # gera ./dist
+```
+
+## Deploy
+
+O workflow `.github/workflows/deploy.yml` executa `npm run check`, `npm test`,
+`npm run build` e publica o diretório `dist/` no GitHub Pages a cada push.
+
+Licença MIT.

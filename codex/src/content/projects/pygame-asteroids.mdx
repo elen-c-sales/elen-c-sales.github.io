@@ -1,10 +1,10 @@
 ---
 title: "Pygame Asteroids"
-tagline: "Clássico Asteroids com profundidade 3D via interpolação de cores e parallax."
+tagline: "Clássico Asteroids com profundidade 3D via interpolação de cores e parallax"
 family: jogos
-year: 2024
+year: 2026
 status: enviado
-tech: ["Python", "Pygame"]
+tech: ["Python", "Pygame", "Pygbag"]
 links:
   repo: "https://github.com/elen-c-sales/pygame-asteroids"
   demo: "https://elen-c-sales.github.io/pygame-asteroids/"
@@ -17,13 +17,93 @@ order: 8
 
 # Pygame Asteroids
 
-Uma interpretação moderna do clássico jogo de arcade Asteroids da Atari,
-apresentando um sistema visual de profundidade 3D exclusivo que utiliza
-interpolação de cores e rolagem parallax.
+Interpretação moderna do clássico **Asteroids** da Atari, com um sistema visual
+de **profundidade 3D** construído a partir de interpolação de cores e rolagem
+parallax — preservando a estética wireframe e a física vetorial do original.
 
-## Detalhes técnicos
-- **Motor:** Pygame 2
-- **Profundidade 3D:** interpolação de cores baseada em distância + parallax multi-camadas
-- **Física:** Newtoniana simplificada (aceleração, atrito, wraparound)
-- **Partículas:** explosões, trails, screen shake
-- **Web port:** via pygbag (WebAssembly)
+## História de origem
+
+O projeto nasceu de uma troca criativa no LinkedIn: após ver o **Dino Run -
+Vecna Edition**, Rafaela Catharina Pechtoll Pereira criou uma visualização de
+campo estelar em Pygame, com estrelas em três cores controladas pelo mouse. O
+trabalho relembrou o arcade da Atari e motivou esta versão, com efeitos visuais
+modernos e a mesma física baseada em vetores.
+
+## Sistema de profundidade visual
+
+- Objetos distantes aparecem **azuis**; objetos próximos, **brancos**.
+- O tamanho escala proporcionalmente à distância.
+- Estrelas de fundo se movem em velocidades diferentes conforme a profundidade.
+- Campo estelar dinâmico, reagindo ao movimento da nave.
+
+## Gameplay
+
+- Física vetorial com inércia e tela infinita.
+- Fragmentação de asteroides: grande → 2 médios → 2 pequenos.
+- Explosão autêntica da nave com destroços triangulares.
+- Detecção de colisão consciente da profundidade.
+
+### Pontuação por profundidade
+
+- Asteroides grandes: **20 ×** multiplicador de profundidade.
+- Asteroides médios: **50 ×** multiplicador de profundidade.
+- Asteroides pequenos: **100 ×** multiplicador de profundidade.
+
+Quanto mais próximo (mais branco) o asteroide, mais pontos — o que incentiva
+jogadas estratégicas.
+
+### Dificuldade progressiva
+
+- Um nível a cada **500 pontos**.
+- Velocidade dos asteroides aumenta **15% por nível**.
+- Intervalo de spawn diminui, com mínimo de **1.5 s**.
+- Máximo de asteroides simultâneos sobe de **8 para 15**.
+
+## Áudio
+
+Efeitos de disparo, destruição de asteroides e explosão da nave, com mixagem de
+volume balanceada. Os sons foram gerados com **Bfxr**.
+
+## Controles
+
+- **Setas** ou **WASD** — rotacionar e acelerar
+- **Barra de Espaço** — atirar
+- **Enter** — reiniciar ao perder
+- **Escape** — sair
+
+## Versões desktop e web
+
+**Web:** roda no navegador via Pygbag/WebAssembly, com cerca de 70% da
+performance nativa e zero instalação.
+
+**Desktop:** melhor performance, requer Python 3.7+ e Pygame 2.0+.
+
+```bash
+git clone https://github.com/elen-c-sales/pygame-asteroids.git
+cd pygame-asteroids
+pip install pygame
+python main.py
+```
+
+As duas versões compartilham cerca de 95% do código; a web adiciona
+`async/await`.
+
+## Estrutura
+
+```
+pygame-asteroids/
+├── main.py                 # versão desktop
+├── main_web.py             # versão web (async/await)
+├── classes/                # star, asteroid, ship, bullet, partícula, destroços
+├── utils/                  # interpolação de cor e colisão
+├── assets/sounds/          # áudio
+├── docs/                   # build da versão web
+├── TECHNICAL.md            # documentação técnica
+└── DEPLOY.md               # guia de deploy
+```
+
+## Créditos
+
+Desenvolvido por Elen Camila Sales. Inspiração: visualização de campo estelar
+de Rafaela Catharina Pechtoll Pereira. Jogo original: Asteroids (Atari, 1979).
+Efeitos sonoros gerados com Bfxr. Licença MIT.

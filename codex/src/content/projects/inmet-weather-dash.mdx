@@ -1,10 +1,10 @@
 ---
 title: "INMET Weather Dash"
-tagline: "Pipeline completo: scraping INMET + processamento + visualização tempo real."
+tagline: "Pipeline completo: scraping INMET + processamento + dashboard interativo em Dash"
 family: dados
-year: 2024
+year: 2025
 status: enviado
-tech: ["Python", "Dash", "Selenium", "Plotly"]
+tech: ["Python", "Selenium", "Pandas", "Plotly Dash"]
 links:
   repo: "https://github.com/elen-c-sales/inmet-weather-dashboard"
 cover: "/media/inmet-weather-dash.png"
@@ -16,12 +16,58 @@ order: 13
 
 # INMET Weather Dash
 
-Pipeline completo de dados: Coleta automática (Scraping), processamento e
-visualização em tempo real.
+Pipeline completo de **coleta automatizada** e **visualização interativa** de
+dados meteorológicos da estação **BRAGANÇA (A226)**, do INMET.
 
-## Detalhes técnicos
-- **Coleta:** Selenium (headless) — scraping INMET (estações automáticas)
-- **Processamento:** Pandas — limpeza, interpolação, agregação horária/diária
-- **Visualização:** Dash + Plotly — mapa interativo, séries temporais, alertas
-- **Deploy:** Docker + systemd timer (coleta a cada hora)
-- **Alertas:** thresholds configuráveis (temp, chuva, vento)
+A essência do projeto está na automação da coleta: preenchimento dinâmico de
+formulários, manipulação de datas e download de CSV via navegador, tudo
+construído com **Selenium** e com foco em reprodutibilidade, personalização e
+independência de API.
+
+## Destaques
+
+- **Coleta com Selenium** — interage com o site oficial do INMET simulando
+  ações humanas para preencher filtros de estado, estação e datas, gerar a
+  tabela e baixar os dados em CSV.
+- **Personalização geográfica e temporal** — estado, estação e período
+  configuráveis, adaptando a ferramenta a qualquer região do Brasil.
+- **Dashboard com Dash** — médias diárias de temperatura e umidade, além da
+  precipitação acumulada, com múltiplos eixos e visual moderno.
+- **Painel de resumo** — valores do último dia disponível com ícones temáticos
+  e destaque visual.
+
+## Stack
+
+- **Python**
+- **Selenium** — scraping com manipulação de interface
+- **Pandas** — tratamento e agregação dos dados
+- **Plotly Dash** — visualização interativa
+- **HTML/CSS** — estilização do dashboard
+
+## Estrutura
+
+```
+inmet-weather-dashboard/
+├── scraping/           # Script Selenium para baixar CSV
+├── dashboard/          # App Dash para visualização
+├── dados_inmet.csv     # Dados salvos
+└── README.md
+```
+
+## Como executar
+
+```bash
+pip install -r requirements.txt
+
+# Rode o scraping (opcional)
+python scraping/scraping_inmet.py
+
+# Inicie o dashboard
+python dashboard/app.py
+```
+
+## Demonstrações
+
+O repositório inclui vídeos que mostram a automação de scraping com Selenium e o
+dashboard interativo com os dados processados, com gráficos multivariados e o
+resumo diário.

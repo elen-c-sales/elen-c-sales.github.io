@@ -1,8 +1,8 @@
 ---
 title: "Doom Fire"
-tagline: "Estudo do efeito de fogo estilo Doom com paleta de cores e simulação discreta de calor"
+tagline: "Estudo do efeito de fogo do Doom com matriz de calor, paleta e vento — versão vetorizada"
 family: visao
-year: 2023
+year: 2026
 status: enviado
 tech: ["Python", "Pygame", "NumPy"]
 links:
@@ -16,18 +16,97 @@ order: 4
 
 # Doom Fire (Fogo Doom)
 
-Estudo do efeito de fogo estilo Doom usando uma tabela de cores (paleta 256 cores)
-e uma simulação discreta de calor, com dissipação e vento. Implementação fiel ao
-algoritmo original do Doom (1993).
+Estudo do efeito de fogo estilo Doom usando uma tabela de cores e uma
+**simulação discreta de calor**. A implementação foi feita como exercício:
+primeiro entendendo a "física" simplificada do fogo, depois adicionando
+dissipação e, por fim, o vento.
 
-## Detalhes técnicos
-- **Algoritmo:** autômato celular 1D — cada pixel propaga calor para cima
-- **Paleta:** 256 cores (preto → vermelho → amarelo → branco)
-- **Vento:** offset aleatório na propagação horizontal
-- **Performance:** NumPy vectorizado (60 FPS em 800×600)
+Não existe simulação de partículas ou fluidos: o fogo é apenas uma matriz de
+números inteiros sendo atualizada a cada frame.
 
-## Variações implementadas
-- Fogo clássico (vento zero)
-- Fogo com vento lateral
-- Fogo "psicodélico" (paleta HSV rotacionada)
-- Interativo: mouse adiciona fonte de calor
+## Como funciona
+
+O grid tem valores de **0 a 36**, que representam a temperatura e são mapeados
+para uma cor no momento da renderização:
+
+| Índice | Cor aproximada | Estado simulado |
+| --- | --- | --- |
+| 36 | Branco | Fonte de calor infinita (base) |
+| 20 a 35 | Amarelo / laranja | Combustão ativa (corpo da chama) |
+| 1 a 19 | Vermelho / marrom | Resfriamento e dissipação |
+| 0 | Preto | Frio / vazio (topo da tela) |
+
+A cada frame, cada pixel recebe o valor do pixel **diretamente abaixo** dele,
+menos um decaimento aleatório:
+
+```
+Pixel_Atual = Pixel_Abaixo - Decaimento_Aleatório
+```
+
+O calor sobe, mas perde intensidade aleatoriamente conforme ganha altura. O
+vento não é físico: é um deslocamento horizontal da matriz, com vento constante
+(`np.roll`) e turbulência por linha para criar movimento orgânico.
+
+### Fluxo do frame
+
+1. Gera o decaimento aleatório.
+2. Calcula o novo calor a partir da linha de baixo.
+3. Aplica vento constante e turbulência.
+4. Converte índices em RGB pela paleta.
+5. Escala e desenha na janela.
+
+## Versão vetorizada
+
+Após uma pergunta técnica sobre como simular os 3 segundos de fogo sem loops,
+o projeto ganhou uma implementação vetorizada:
+
+- Elimina os loops espaciais (100×100 pixels) com operações NumPy.
+- Reduz de O(T×H×W) loops em Python para O(T) iterações com operações em C.
+- Ganho de performance de aproximadamente **100×** na geração dos frames.
+- O loop temporal permanece, por causa da dependência causal da propagação.
+
+O estudo completo está em `TECHNICAL_DEEP_DIVE.md`, com análise Big-O,
+comparação entre abordagens, broadcasting avançado, trade-offs de memória e
+discussão sobre paralelização em GPU.
+
+Há ainda a abstração **Decay Matrix** (PR #1), que troca equivalência física por
+equivalência perceptual e alcança **2.5× de speedup**, documentada em
+`decay_abstraction/DECAY_MATRIX_PROPOSAL.md`.
+
+## Estrutura
+
+| Arquivo | Função |
+| --- | --- |
+| `fire.py` | Grid de calor, paleta e renderização |
+| `vectorizedvolumetricfire.py` | Versão vetorizada com broadcasting NumPy |
+| `TECHNICAL_DEEP_DIVE.md` | Análise técnica de vetorização e otimização |
+| `decay_abstraction/` | Proposta e comparação da abstração Decay Matrix |
+
+## Como rodar
+
+Requisitos: Python 3, `pygame`, `numpy` e `imageio` (para salvar GIFs).
+
+```bash
+python fire.py
+python vectorizedvolumetricfire.py
+```
+
+Comparação de performance da abstração Decay Matrix:
+
+```bash
+uv run decay_abstraction/compare_approaches.py
+```
+
+## Parâmetros
+
+- **LARGURA_FOGO** — resolução horizontal; maior deixa o fogo mais detalhado,
+  menor deixa mais pixelado e retrô.
+- **ALTURA_FOGO** — altura máxima da chama antes de ser cortada.
+- **Fator de decay** — maior deixa o fogo baixo e rápido; menor faz o fogo subir
+  até o topo, em efeito pilar.
+- **Paleta** — define o estilo do fogo; trocá-la muda toda a aparência.
+
+## Controles
+
+- **R** — limpa o fogo (reinicia a tela).
+- Fechar a janela — encerra o programa.

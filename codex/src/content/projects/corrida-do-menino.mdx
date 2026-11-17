@@ -1,0 +1,135 @@
+---
+title: "Corrida do Menino"
+tagline: "Endless runner amazônico em pixel art com bichos do quintal e gatinhos ajudantes."
+family: jogos
+year: 2026
+status: enviado
+tech: ["Python", "Pygame", "PICO-8", "Pixel Art", "Game Design"]
+links:
+  repo: "https://github.com/elen-c-sales/corrida-do-menino"
+cover: "/media/corrida-do-menino.gif"
+coverAlt: "Corrida do Menino — Sauron correndo pelo quintal do sítio ao entardecer"
+arcaneNote: "corre, menino — o quintal inteiro corre junto"
+featured: true
+order: 6.5
+---
+
+# Corrida do Menino
+
+Jogo de corrida infinita em 2D feito em **Python + Pygame**, concebido como
+versão de computador e bancada de testes para o console portátil **R36S**, que
+roda a versão em **PICO-8** com **TreeFrogUI**.
+
+O jogo retrata o cotidiano e o imaginário de **Sauron** no sítio da família, no
+Pará: vegetação amazônica e de quintal, aparelhos de tecnologia retrô,
+gambiarra eletrônica e os animais da casa. Todo o visual é desenhado
+proceduralmente em pixel art — sem sprites externos.
+
+> Dedicado ao filho Sauron e aos filhotes Misty, Saddam, Shelby, Catarino,
+> Coraline, Hanna, Scar e Jabotão.
+
+## O quintal
+
+Sauron é um menino de cabelo comprido castanho que ondula com a corrida, usa
+fones de ouvido antigos no pescoço e carrega uma bolsa tiracolo com antena de
+rádio nas costas. A partida acontece ao entardecer, com mangueiras frondosas,
+muro de tijolinhos, bananeiras com folhas verdes e secas, vaga-lumes e folhas
+amarelas sobre a terra batida.
+
+Quem acompanha a corrida em segundo plano:
+
+- **Misty** — cadela grande, pelagem branca com cabeça preta e manchas no dorso.
+- **Shelby** — cachorro musculoso, pelagem ruiva avermelhada (red nose) e olhos
+  cor de mel.
+- **Saddam** — cachorro baixo e robusto, caramelo dourado com peito branco.
+- **Jabotão** — jabuti amazônico de casco escuro com placas amarelo-ocre,
+  caminhando no seu próprio ritmo.
+
+## Trequinhos tecnológicos
+
+Pelo caminho flutuam dispositivos antigos e peças de bancada. Saltar e coletar
+é o que move a progressão:
+
+1. **Aparelhos MP3** — players portáteis com visor LCD iluminado e fone.
+2. **Cyberdecks** — terminais artesanais com tela de fósforo verde, teclado
+   compacto colorido e antena com LED.
+3. **Fitas cassete** — mídias magnéticas clássicas.
+4. **Placas de circuito** — placas verdes perfuradas, trilhas metálicas,
+   microcontrolador e LED indicador.
+
+## Gatinhos ajudantes e progressão
+
+A cada marco de trequinhos coletados, um dos quatro gatos da família é
+recrutado como ajudante. Cada novo gato eleva o nível da corrida e introduz
+obstáculos mais complexos: tocos com raízes, galhos baixos de mangueira com
+mangas e cipós (exigem agachar), bananeiras altas e troncos duplos caídos.
+
+| Gato | Desbloqueio | Poder |
+| --- | --- | --- |
+| **Catarino** | 3 trequinhos | Impulso extra no salto, facilita passar por bananeiras altas |
+| **Coraline** | 7 trequinhos | Campo magnético que atrai trequinhos próximos |
+| **Hanna** | 12 trequinhos | Escudo que quebra um obstáculo ao tropeçar; recarrega a cada 5 trequinhos |
+| **Scar** | 18 trequinhos | Dobra a contagem de trequinhos e a pontuação de cada item |
+
+É possível alternar livremente entre os gatos já desbloqueados durante a
+corrida para adaptar a habilidade ao obstáculo que vem pela frente.
+
+## Controles
+
+- **ESPAÇO**, **SETA PARA CIMA** ou **W** — pular
+- **SETA PARA BAIXO** ou **S** — agachar ou acelerar a descida no pulo
+- **C**, **TAB** ou **E** — alternar entre os gatinhos desbloqueados
+- **1**, **2**, **3**, **4** — selecionar Catarino, Coraline, Hanna ou Scar
+- **R** ou **ESPAÇO** — reiniciar na tela de fim de jogo
+- **ESC** — encerrar
+
+## Detalhes técnicos
+
+- **Renderização procedural** — cenário, personagem e bichos desenhados em
+  pixel art direto no código, com camadas de parallax.
+- **Física de corrida** — salto, agachamento, aceleração de queda e colisão.
+- **Sistema de partículas** — vaga-lumes, folhas e efeitos de coleta.
+- **Progressão por coleta** — desbloqueio de ajudantes e aumento de dificuldade.
+- **Persistência** — recorde salvo automaticamente em `recorde.txt`.
+- **Captura automatizada** — `tools/captura_gif.py` gera os GIFs de demonstração
+  com um autopiloto, sem alterar o recorde do jogador.
+
+## Estrutura do repositório
+
+- `corrida.py` — código-fonte completo do jogo.
+- `pico8/dino.p8` — versão PICO-8 pronta para o R36S com TreeFrogUI.
+- `tools/captura_gif.py` — gerador dos GIFs de demonstração.
+- `recorde.txt` — maior pontuação, atualizada automaticamente.
+- `captura.gif` / `captura-480p.gif` — demonstrações em 640×360 e 480×270.
+
+## Como rodar
+
+Requisitos: Python 3.7+, Pygame 2.0+ (Pillow apenas para gerar GIFs).
+
+```bash
+pip install pygame
+python corrida.py
+```
+
+## Versão para o portátil R36S
+
+A versão PICO-8 foi reescrita para acompanhar o projeto e inclui Sauron com
+cabelo comprido, fone e bolsa com antena; o sítio ao entardecer com céu em
+camadas, mata com parallax e muro de tijolinhos; Misty, Shelby, Saddam e
+Jabotão ao fundo; os trequinhos e os quatro gatinhos com seus poderes; toco,
+galho de mangueira e bananeira como obstáculos; e recorde persistido com
+`dset()`.
+
+Controles no console:
+
+- **A** ou **SETA PARA CIMA** — pular
+- **SETA PARA BAIXO** — agachar
+- **B** — alternar entre os gatinhos desbloqueados
+
+Para jogar no R36S, copie `pico8/dino.p8` para o diretório `roms/pico8/` do
+cartão de memória com o TreeFrogUI configurado. O mesmo diretório também
+recebe o cartucho `asteroids.p8`, versão em Lua do projeto Pygame Asteroids.
+
+## Licença
+
+MIT — software livre e de código aberto.

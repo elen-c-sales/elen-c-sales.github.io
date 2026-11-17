@@ -1,10 +1,10 @@
 ---
 title: "Dino Run Vecna Edition"
-tagline: "Versão temática do Dino Run onde você enfrenta o Vecna — endless runner divertido"
+tagline: "Endless runner temático de Stranger Things em Pygame, com versão web via WebAssembly"
 family: jogos
-year: 2024
+year: 2026
 status: enviado
-tech: ["JavaScript", "HTML5 Canvas", "CSS3"]
+tech: ["Python", "Pygame", "Pygbag"]
 links:
   repo: "https://github.com/elen-c-sales/dino-run-vecna-edition"
   demo: "https://elen-c-sales.github.io/dino-run-vecna-edition/"
@@ -17,12 +17,66 @@ order: 7
 
 # Dino Run Vecna Edition
 
-Versão temática do Dino Run onde você enfrenta o Vecna. Um jogo endless
-runner divertido desenvolvido para web.
+Endless runner desenvolvido em **Python + Pygame**, com adaptação temática de
+*Stranger Things*: o antagonista **Vecna**, **Demobats** e o ambiente do **Mundo
+Invertido**. O objetivo é percorrer a maior distância possível evitando
+obstáculos, com dificuldade progressiva.
 
-## Detalhes técnicos
-- **Motor:** JavaScript vanilla + HTML5 Canvas
-- **Obstáculos:** Vecna + minions gerados proceduralmente
-- **Power-ups:** escudos, multiplicadores, slow-motion
-- **Persistência:** high score em localStorage
-- **Deploy:** GitHub Pages
+O jogo também roda direto no navegador, compilado para **WebAssembly com
+Pygbag** e hospedado no GitHub Pages.
+
+## Mecânicas e funcionalidades
+
+- **Geração procedural de obstáculos** — vinhas, relógios e demobats aparecem
+  aleatoriamente.
+- **Sistema de pontuação** — a pontuação cresce com a progressão e o recorde
+  (*high score*) é persistido localmente em `highscore.txt`.
+- **Colisão** — hitboxes ajustadas para detecção precisa entre o personagem e os
+  obstáculos.
+- **Efeitos visuais** — partículas de cinzas flutuantes do Mundo Invertido e
+  **parallax em duas camadas** (15% e 40% da velocidade do jogo), criando
+  profundidade no cenário.
+- **Trilha sonora** — música temática de Stranger Things em loop contínuo.
+
+## Controles
+
+- **Barra de Espaço** ou **Seta para Cima** — pular
+- **Seta para Baixo** — agachar (para esquivar de obstáculos aéreos)
+- **Barra de Espaço** ou **R** — reiniciar após o game over
+
+## Estrutura
+
+- `dino-run.py` — loop do jogo, classes e lógica de controle.
+- `assets/` — sprites, camadas de parallax, efeitos sonoros e trilha.
+- `demo/` — vídeo de demonstração.
+- `highscore.txt` — recorde persistido.
+- `LICENSE` — licença MIT.
+
+## Como rodar
+
+Requisitos: Python 3.x e Pygame.
+
+```bash
+pip install pygame
+python dino-run.py
+```
+
+## Versão web
+
+A versão web é gerada com Pygbag:
+
+```bash
+pip install pygbag
+pygbag --build .
+# copie build/web para docs/ e publique no GitHub Pages
+```
+
+O deploy usa a branch `main`, pasta `/docs`. Instruções completas em
+`DEPLOY.md`. A versão web compartilha o mesmo código do desktop e adiciona
+`async/await` para compatibilidade com o navegador.
+
+## Origem
+
+O projeto nasceu como estudo de Pygame e acabou inspirando outros projetos do
+portfólio, como o **Pygame Asteroids** — que, por sua vez, partiu de uma
+visualização de campo estelar feita por outra desenvolvedora no LinkedIn.

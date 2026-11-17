@@ -1,15 +1,15 @@
 ---
 title: "Raycasting 2D Engine"
-tagline: "Motor Wolfenstein 3D do zero — DDA, texturas, colisão."
+tagline: "Estudo de iluminação 2D dinâmica com raycasting, portas e mapa estilo mansão"
 family: jogos
-year: 2024
+year: 2026
 status: enviado
-tech: ["JavaScript", "HTML5 Canvas"]
+tech: ["Python", "Pygame", "Pygbag"]
 links:
   repo: "https://github.com/elen-c-sales/raycasting-2D"
   demo: "https://elen-c-sales.github.io/raycasting-2D/"
 cover: "/media/raycasting.mp4"
-coverAlt: "Raycasting 2D — motor Wolfenstein 3D style"
+coverAlt: "Raycasting 2D — iluminação dinâmica e portas"
 arcaneNote: "a parede é ilusão"
 featured: false
 order: 9
@@ -17,12 +17,72 @@ order: 9
 
 # Raycasting 2D Engine
 
-Motor de renderização estilo Wolfenstein 3D implementado do zero. Simula
-projeção 3D em ambiente 2D com texturas e colisão.
+Implementação técnica de **raycasting 2D** aplicada à **iluminação dinâmica**,
+desenvolvida em **Python + Pygame** para estudo e exploração do conceito.
 
-## Detalhes técnicos
-- **Algoritmo:** DDA (Digital Differential Analyzer) para raycasting
-- **Texturas:** mapeamento de coordenadas de parede (wall-X)
-- **Colisão:** AABB + sliding collision
-- **Mapa:** grid 2D com tipos de parede variados
-- **Performance:** 60 FPS em 640×480 (Canvas 2D)
+## Características técnicas
+
+- **Raycasting em tempo real** com **180 raios** e **65° de campo de visão**.
+- **Iluminação dinâmica** por interseção de linhas (*ray-line intersection*).
+- **Sistema de portas interativas** que afetam a propagação da luz.
+- **Detecção de colisão** precisa com paredes e obstáculos.
+- **Movimento suave** com interpolação de ângulo e controle WASD.
+- **Mapa complexo** no estilo mansão, com múltiplos cômodos.
+
+## Conceitos explorados
+
+1. **Raycasting** — algoritmo clássico usado em Wolfenstein 3D e Doom.
+2. **Geometria vetorial** — cálculo de interseção entre linhas.
+3. **Otimização** — trade-off entre qualidade visual (360 raios) e performance
+   (180 raios).
+4. **Renderização com polígonos** — conversão dos pontos de colisão em área
+   iluminada.
+
+## Controles
+
+- **WASD** ou **setas** — movimentação
+- **Mouse** — direciona a visão/cone de luz
+- **ENTER** — interagir com portas próximas
+
+## Versões desktop e web
+
+### Desktop
+
+```bash
+pip install pygame
+python main_desktop.py
+```
+
+### Web
+
+```bash
+pip install pygbag
+pygbag --build .
+# copie build/web para docs/ e publique no GitHub Pages
+```
+
+Instruções completas de build e deploy em `BUILD.md`.
+
+## Estrutura
+
+- `main.py` — versão web, com asyncio para Pygbag.
+- `main_desktop.py` — versão desktop.
+- `build/` — artefatos de build (ignorados pelo Git).
+- `docs/` — build final para GitHub Pages.
+
+## Stack
+
+Python 3.x, Pygame/Pygame-CE, Pygbag (WebAssembly) e GitHub Pages.
+
+## Referências
+
+Baseado em conceitos de raycasting aplicados à iluminação 2D, técnica presente
+em **Wolfenstein 3D** (id Software, 1992), **Monaco: What's Yours Is Mine**
+(Pocketwatch Games, 2013) e **Don't Starve** (Klei Entertainment, 2013).
+
+## Objetivos de aprendizado
+
+- Algoritmos de raycasting para iluminação 2D.
+- Otimização de performance em Python/Pygame.
+- Matemática aplicada (geometria vetorial).
+- Portabilidade de aplicações Pygame para web com Pygbag.

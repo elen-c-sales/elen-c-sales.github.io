@@ -1,10 +1,10 @@
 ---
 title: "PyOpenCV FaceRec"
-tagline: "Reconhecimento facial LBPH + interface CustomTkinter."
+tagline: "Reconhecimento facial LBPH com interface CustomTkinter e operação via CLI"
 family: visao
-year: 2024
+year: 2026
 status: enviado
-tech: ["Python", "OpenCV", "CustomTkinter"]
+tech: ["Python", "OpenCV", "CustomTkinter", "NumPy"]
 links:
   repo: "https://github.com/elen-c-sales/PyOpenCV-FaceRec"
 cover: "/media/pyopencv.mp4"
@@ -16,12 +16,76 @@ order: 6
 
 # PyOpenCV FaceRec
 
-Sistema completo de reconhecimento facial com OpenCV (LBPH). Inclui Interface
-Gráfica moderna (CustomTkinter), cadastro automático e reconhecimento em tempo real.
+Sistema completo de reconhecimento facial com o algoritmo **LBPH** (*Local
+Binary Patterns Histograms*) do OpenCV. Permite cadastrar usuários, coletar
+amostras faciais, treinar o modelo e reconhecer rostos em tempo real.
+
+O software oferece **duas interfaces** que compartilham a mesma base de dados:
+
+1. **GUI** — aplicação moderna com CustomTkinter.
+2. **CLI** — scripts de terminal para operações rápidas ou ambientes sem
+   interface gráfica.
+
+## Funcionalidades
+
+- **Cadastro** — insere o nome e gera automaticamente um ID único em
+  `usuarios.json`.
+- **Coleta de faces** — captura automaticamente **30 imagens** do rosto
+  detectado pela webcam, salvando em `dataset/`.
+- **Treinamento** — processa o dataset e atualiza o modelo `trainer.yml`.
+- **Reconhecimento em tempo real** — identifica o rosto e exibe nome e nível de
+  confiança.
+
+## Interface gráfica
+
+```bash
+python gui_app.py
+```
+
+A GUI centraliza todas as etapas em um único app: início, cadastro, coleta,
+treinamento e reconhecimento.
+
+## Linha de comando
+
+Orquestrador `main.py` com os comandos `novo`, `coleta`, `treino` e `run`:
+
+```bash
+python main.py novo
+python main.py coleta
+python main.py treino
+python main.py run
+```
+
+No reconhecimento, pressione **ESC** para sair.
+
+## Estrutura
+
+- `gui_app.py` — interface gráfica.
+- `main.py` — orquestrador da CLI.
+- `00_cadastro.py` — cadastro de usuários.
+- `01_coleta.py` — coleta de amostras faciais.
+- `02_treinamento.py` — treinamento do modelo LBPH.
+- `03_reconhecimento.py` — reconhecimento em tempo real.
+- `usuarios.json` — mapeamento local de nomes para IDs.
+- `trainer.yml` — modelo treinado.
+- `dataset/` — imagens capturadas.
 
 ## Detalhes técnicos
-- **Algoritmo:** LBPH (Local Binary Patterns Histograms) — robusto a variações de iluminação
-- **Interface:** CustomTkinter (tema escuro/claro, responsiva)
-- **Cadastro:** captura automática de múltiplos ângulos via webcam
-- **Reconhecimento:** tempo real com threshold configurável
-- **Persistência:** modelo salvo em XML + labels em JSON
+
+- **LBPH** — robusto a variações de iluminação e adequado a datasets pequenos.
+- **Persistência compartilhada** — GUI e CLI operam sobre os mesmos arquivos;
+  alterações em uma refletem imediatamente na outra.
+- **IDs numéricos** — o reconhecimento usa IDs internamente e faz o mapeamento
+  reverso para nomes consultando o JSON em tempo de execução.
+
+## Instalação
+
+```bash
+pip install opencv-python opencv-contrib-python numpy Pillow customtkinter
+```
+
+Ou:
+
+```bash
+pip install -r requirements.txt
+```

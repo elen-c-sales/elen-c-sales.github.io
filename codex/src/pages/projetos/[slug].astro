@@ -240,18 +240,4 @@ const statusColors: Record<string, string> = {
       <Content />
     </div>
   </article>
-
-  <script type="module">
-    // Registra visita para trigger de segredo
-    import { useSecrets } from '../../lib/secrets/engine';
-
-    // Pequeno script inline para registrar visita
-    if (typeof window !== 'undefined') {
-      // Aguarda o SecretsProvider hidratar
-      setTimeout(() => {
-        const event = new CustomEvent('codex:visit', { detail: { slug: '{project.slug}' } });
-        window.dispatchEvent(event);
-      }, 100);
-    }
-  </script>
 </Codex>

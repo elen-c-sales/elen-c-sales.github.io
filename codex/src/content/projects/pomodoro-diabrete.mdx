@@ -2,13 +2,13 @@
 title: "Pomodoro Diabrete"
 tagline: "Timer pixel art com familiar que cansa no foco e revive na pausa"
 family: jogos
-year: 2025
+year: 2026
 status: enviado
-tech: ["Python", "Pygame", "Pixel Art"]
+tech: ["Python", "Pygame", "Pixel Art", "Pytest"]
 links:
   repo: "https://github.com/elen-c-sales/pomodoro-diabrete"
 cover: "/media/pomodoro-diabrete.gif"
-coverAlt: "Diabrete focado — pixel art 16x16"
+coverAlt: "Diabrete focado — pixel art gerada em tempo real"
 arcaneNote: "o familiar do códice nasceu aqui. alimente-o com foco."
 featured: true
 order: 1
@@ -16,16 +16,139 @@ order: 1
 
 # Pomodoro Diabrete
 
-Um timer Pomodoro diferente: um **monstrengo pixel** que acompanha sua sessão.
-Durante o foco ele vai cansando (animação de exaustão); quando a pausa começa,
-ele se transforma num **diabrete alegre** e recupera energia numa janela overlay
-transparente — você *precisa* clicar pra iniciar a pausa, o que quebra o
-autopiloto.
+Um timer Pomodoro diferente: um **monstrengo pixel art** que acompanha a
+sessão. Enquanto você trabalha ele **cansa e vai se demonizando** — a cor, os
+chifres, os olhos e a boca mudam de fofos para demoníacos conforme a energia
+cai. Na pausa, ele descansa e volta a ficar feliz.
 
-## Detalhes técnicos
-- **Motor:** Pygame 2 + spritesheet 16×16 (Aseprite)
-- **Estado:** máquina de estados simples (foco → transição → pausa → recuperação)
-- **Overlay:** janela `pygame.NOFRAME` com `SRCALPHA` + `pygame.display.set_mode`
-- **Persistência:** JSON local (ciclos, tempo total, humor do bicho)
+O diferencial é que a troca de fase é **manual**: quando o foco termina, o
+bichinho fica *aguardando* você marcar o início da pausa. É aí que entra a
+animação de alegria — uma recompensa visual por respeitar o descanso.
+
+## Modo overlay
+
+A janela foi feita para ficar discretamente na tela sem atrapalhar o trabalho:
+
+- **Repouso (compacto):** só o monstrengo e o timer flutuando, com opacidade
+  baixa.
+- **Expandido (mouse em cima):** a opacidade sobe e aparece um painel com fase,
+  energia, ciclos e botões (iniciar/pausar, pular, reset, sair).
+
+A transição é suave e disparada pela entrada do cursor na janela. No Windows a
+janela vira uma *layered window* com cor-chave: o fundo fica 100% transparente
+e o restante recebe a opacidade atual. Em outros sistemas (ou com `--opaque`) a
+janela abre opaca normalmente.
+
+## Como funciona
+
+### Ciclo de fases
+
+```
+FOCO --(tempo acaba)--> aguardando --(usuário marca a pausa)--> PAUSA (comemora)
+  ^                                                                  |
+  +--------------- aguardando <--(tempo acaba)-----------------------+
+```
+
+- **FOCO** — 25 min por padrão; a energia cai e o bichinho demoniza aos poucos.
+- **PAUSA** — 5 min; a energia sobe e ele dorme, acorda e comemora.
+- `tick()` nunca troca de fase sozinho: apenas sinaliza o fim com um evento.
+- `skip()` (tecla `S`) encerra a fase imediatamente, como se o tempo tivesse
+  acabado.
+
+### Modelo de energia
+
+A energia vai de 0 a 100 e é atualizada por tempo decorrido, com taxas
+derivadas dos parâmetros de custo/recuperação:
+
+```
+Durante FOCO:   E = clamp(E - focus_cost    / focus_duration * dt, 0, 100)
+Durante PAUSA:  E = clamp(E + break_restore / break_duration * dt, 0, 100)
+```
+
+Com os valores padrão (`focus_cost = 45`, `break_restore = 45`), um ciclo
+completo devolve o bichinho ao ponto de partida:
+
+```
+E=85  --FOCO 25min-->  E=40 (cansado)  --PAUSA 5min-->  E=85 (recuperado)
+```
+
+Diminuindo `break_restore`, o cansaço acumula ao longo do dia.
+
+### Humor e expressões
+
+| Condição | Humor | Aparência |
+| --- | --- | --- |
+| energia ≤ 20 | `exhausted` | vermelho demoníaco, chifres roxos, olhos virados |
+| energia ≤ 45 | `tired` | laranja, olhos semicerrados, suor, presas e cauda |
+| FOCO e energia > 45 | `focus` | fofo, sobrancelhas determinadas e olhar fixo |
+| energia ≤ 75 (pausa) | `ok` | amarelado, sorriso discreto |
+| energia > 75 (pausa) | `happy` | verde-menta, olhos grandes e bochechas |
+
+A propriedade `_menace()` (0 = fofinho, 1 = demônio) interpola cor do corpo,
+chifres, olhos, boca e cauda em tempo real. A camada visual acrescenta ainda o
+estado **resting** (olhos fechados e `zZz`) e a animação de **alegria** ao
+iniciar a pausa, com pulo, estrelas e anel de destaque.
+
+## Arquitetura
+
+O projeto separa regra de negócio de apresentação — `pet.py` não importa
+Pygame, o que permite testar toda a mecânica sem abrir janela.
+
+- `pet.py` — máquina de estados, energia, humor e formatação de tempo.
+- `pomodoro.py` — renderização pixel art, animações, entrada e loop principal.
+- `tests/` — testes de lógica (`test_pet.py`) e de renderização headless
+  (`test_pomodoro.py`, com `SDL_VIDEODRIVER=dummy`).
+
+O monstrengo é desenhado em uma superfície lógica de 64×64 e ampliado 2× com
+nearest-neighbor, sem assets externos.
+
+## Instalação e execução
+
+```bash
+pip install -r requirements.txt
+python pomodoro.py
+```
+
+Modo demo, com ciclos curtos (6 s de foco / 4 s de pausa) para ver o fluxo
+completo em segundos:
+
+```bash
+python pomodoro.py --demo
+```
+
+Em máquinas sem transparência, ou para forçar a janela opaca:
+
+```bash
+python pomodoro.py --opaque
+```
+
+## Controles
+
+| Ação | Entrada |
+| --- | --- |
+| Revelar o painel | Passar o mouse sobre a janela |
+| Iniciar / pausar / começar fase | Botão principal, clique no monstrengo, `Espaço` ou `Enter` |
+| Pular fase | Botão `pular` ou `S` |
+| Novo ciclo (reset) | Botão `reset`, clique direito ou `R` |
+| Sair | Botão `sair` ou `Esc` |
+| Mover a janela | Arrastar (fora dos botões) |
+| Sons | `--sound` (padrão: mudo) |
+
+O botão principal muda de rótulo conforme o contexto: `iniciar foco`, `pausar`,
+`retomar` e `comecar pausa`.
+
+## Testes
+
+```bash
+pip install pytest
+pytest tests/ -v
+```
+
+## Parâmetros de ajuste
+
+Ficam em `pet.py` (mecânica) e `pomodoro.py` (visual): duração de foco e pausa,
+energia inicial, custo/recuperação por fase, limiares de humor, resolução e
+escala da pixel art, opacidade no repouso e no hover, velocidade da transição,
+cor-chave, duração das animações e paleta da barra de energia.
 
 > **Segredo:** o Diabrete vive no rodapé do códice. Clique nele 5 vezes.

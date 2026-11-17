@@ -1,27 +1,63 @@
 ---
 title: "Youtube Audio Downloader"
-tagline: "Interface simples para baixar áudios de vídeos do Youtube, construída com Tkinter."
+tagline: "App Flask para baixar áudio do YouTube e cortar trechos em MP3"
 family: web
-year: 2023
+year: 2026
 status: enviado
-tech: ["Python", "Tkinter", "yt-dlp"]
+tech: ["Python", "Flask", "yt-dlp", "pydub", "ffmpeg"]
 links:
   repo: "https://github.com/elen-c-sales/youtube-audio-downloader"
 cover: "/media/youtube-audio-downloader.png"
-coverAlt: "Youtube Audio Downloader — interface Tkinter"
+coverAlt: "Youtube Audio Downloader — interface web em Flask"
 arcaneNote: "o áudio é seu"
 featured: false
 order: 12
 ---
 
-# Youtube Audio Downloader
+# YouTube Audio Downloader e Cutter
 
-Uma interface simples para baixar áudios de vídeos do Youtube, construída com
-Tkinter.
+Pequeno app em **Flask** para baixar o áudio de vídeos do YouTube e **cortar
+trechos em MP3**. Nasceu de uma necessidade prática: conseguir uma trilha para
+o desenvolvimento do **Dino Run - Vecna Edition** — e acabou virando uma
+ferramenta de apoio para os outros projetos.
 
-## Detalhes técnicos
-- **GUI:** Tkinter (nativo, leve)
-- **Backend:** yt-dlp (robusto, atualizado)
-- **Formatos:** MP3, M4A, Opus (qualidade selecionável)
-- **Features:** playlist support, metadata embedding, progress bar
-- **Threading:** download não bloqueia UI
+## Funcionalidades
+
+- Download de áudio via link do YouTube.
+- Conversão automática para **MP3**.
+- Corte por intervalo de tempo (`MM:SS`).
+- Download do trecho final com limpeza dos arquivos temporários.
+
+## Requisitos
+
+- Python 3.10+
+- **ffmpeg** instalado e acessível no `PATH`
+
+## Instalação
+
+```bash
+python -m venv .venv
+# ative o ambiente virtual e instale as dependências:
+pip install flask yt-dlp pydub
+```
+
+## Uso
+
+```bash
+python app.py
+```
+
+Abra o navegador em `http://localhost:5000`.
+
+## Estrutura
+
+- `app.py` — servidor Flask e rotas.
+- `templates/index.html` — interface web.
+- `downloads/` — arquivos temporários, limpos após o download.
+
+## Stack
+
+- **Flask** — servidor web e rotas.
+- **yt-dlp** — download do áudio do YouTube.
+- **pydub** — corte dos trechos.
+- **ffmpeg** — decodificação e conversão para MP3.
